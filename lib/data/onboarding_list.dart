@@ -4,19 +4,19 @@ final List<OnboardingData> onboardingList = [
   const OnboardingData(
     image: "assets/flower3.jpg",
     title1: "Welcome to",
-    title2: "Flutter World",
-    desc: "Build beautiful apps with clean UI and smooth performance.",
+    title2: "FLORELA",
+    desc: "Discover the beauty of flowers and let nature inspire your moments.",
   ),
   const OnboardingData(
     image: "assets/flower5.jpg",
-    title1: "Learn",
-    title2: "by Doing",
-    desc: "Practice makes perfect! Start coding and see results instantly.",
+    title1: "Fresh Blooms,",
+    title2: "Endless Joy",
+    desc: "Explore unique floral designs crafted with love and elegance.",
   ),
   const OnboardingData(
     image: "assets/flower4.jpg",
-    title1: "Get Started",
-    title2: "Today!",
-    desc: "Join millions of developers building amazing Flutter apps.",
+    title1: "Start Your",
+    title2: "FLORELA Journey",
+    desc: "Bring colors to life — shop, share, and celebrate every occasion.",
   ),
 ];
