@@ -28,14 +28,15 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(height: 8),
         TextField(
           controller: controller,
-          keyboardType: keyboardType,
+          keyboardType: keyboardType, // بيحدد نوع لوحة المفاتيح
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.grey.shade200,
-            border: OutlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
+              borderSide: BorderSide(color: Colors.pink, width: 2),
             ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           ),
         ),
       ],
