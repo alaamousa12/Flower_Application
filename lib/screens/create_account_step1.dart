@@ -20,127 +20,110 @@ class _CreateAccountStep1State extends State<CreateAccountStep1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/backflower.jpg"), // ضع مسار الصورة هنا
-            fit: BoxFit.fill, // يملأ الشاشة ويحتفظ بنسبة الصورة
-          ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: SingleChildScrollView(
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                const Center(
+                  child: StepProgressIndicator(
+                    totalSteps: 2,
+                    currentStep: 1,
+                    selectedColor: Colors.pink,
+                    unselectedColor: Colors.grey,
+                    roundedEdges: Radius.circular(10),
+                    size: 8,
+                  ),
+                ),
 
-                  // 🔹 Step Progress Indicator
-                  const Center(
-                    child: StepProgressIndicator(
-                      totalSteps: 2,
-                      currentStep: 1,
-                      selectedColor: Colors.pink,
-                      unselectedColor: Colors.grey,
-                      roundedEdges: Radius.circular(10),
-                      size: 8,
+                const SizedBox(height: 18),
+
+                Center(
+                  child: Text(
+                    "Create Account",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade800,
                     ),
                   ),
+                ),
 
-                  const SizedBox(height: 18),
+                const SizedBox(height: 8),
+                Center(
+                  child: const Text(
+                    "Fill your information below or register with your social account",
+                    style: TextStyle(color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
 
-                  Center(
-                    child: Text(
-                      "Create Account",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey.shade800,
+                const SizedBox(height: 22),
+
+                CustomTextField(label: "Full Name", controller: nameController),
+                const SizedBox(height: 15),
+                CustomTextField(
+                  label: "Email Address",
+                  controller: emailController,
+                ),
+                const SizedBox(height: 15),
+                CustomPasswordField(
+                  label: "Password",
+                  controller: passwordController,
+                ),
+                const SizedBox(height: 15),
+                CustomPasswordField(
+                  label: "Confirm Password",
+                  controller: confirmController,
+                ),
+
+                const SizedBox(height: 20),
+
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CreateAccountStep2(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.pink,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                  ),
-
-                  const SizedBox(height: 8),
-                  Center(
                     child: const Text(
-                      "Fill your information below or register with your social account",
-                      style: TextStyle(color: Colors.grey),
-                      textAlign: TextAlign.center,
+                      "Next",
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
-                  //                 const SizedBox(height: 30),
-                  const SizedBox(height: 22),
-
-                  // 🔹 Form Fields
-                  CustomTextField(
-                    label: "Full Name",
-                    controller: nameController,
-                  ),
-                  const SizedBox(height: 15),
-                  CustomTextField(
-                    label: "Email Address",
-                    controller: emailController,
-                  ),
-                  const SizedBox(height: 15),
-                  CustomPasswordField(
-                    label: "Password",
-                    controller: passwordController,
-                  ),
-                  const SizedBox(height: 15),
-                  CustomPasswordField(
-                    label: "Confirm Password",
-                    controller: confirmController,
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  // 🔹 Next Button
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const CreateAccountStep2(),
-                          ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Already have an account? "),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
                       child: const Text(
-                        "Next",
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Already have an account? "),
-                      GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: const Text(
-                          "Sign in",
-                          style: TextStyle(
-                            color: Colors.pink,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        "Sign in",
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),

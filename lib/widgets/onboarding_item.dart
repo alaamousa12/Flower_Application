@@ -20,17 +20,14 @@ class OnboardingItem extends StatelessWidget {
 
     return Column(
       children: [
-        // الجزء العلوي (الصورة)
         Container(
           height: size.height * 0.50,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.grey[300],
             image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
           ),
         ),
 
-        // الجزء السفلي (النصوص)
         Expanded(
           child: Container(
             width: double.infinity,
@@ -40,23 +37,28 @@ class OnboardingItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 16),
-                RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: const TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: "$title1 ",
-                        style: const TextStyle(color: Colors.pink),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "$title1 ",
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
-                      TextSpan(text: title2),
-                    ],
-                  ),
+                    ),
+                    Text(
+                      title2,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
+
                 const SizedBox(height: 12),
                 Text(
                   desc,

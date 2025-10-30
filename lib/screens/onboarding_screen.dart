@@ -12,17 +12,15 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final PageController _pageController = PageController();
+  final PageController _pageController =
+      PageController(); // يتحكم في الـ PageView
   int _currentIndex = 0;
 
-  /// عند الانتهاء من الـ Onboarding
   Future<void> _completeOnboarding() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    // نحفظ أن المستخدم شاف الـ onboarding مرة واحدة
     await prefs.setBool('onboarding', false);
 
-    // ما نحفظش أنه سجل دخول إلا من صفحة SignIn فعليًا
     if (mounted) {
       Navigator.pushReplacement(
         context,
@@ -31,12 +29,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  /// الانتقال للصفحة التالية
   void _nextPage() {
     if (_currentIndex < onboardingList.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut,
+        curve: Curves.easeInOut, //تُستخدم لتحديد شكل (منحنى)
       );
     } else {
       _completeOnboarding();
@@ -50,7 +47,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            // ✅ صفحات الـ Onboarding
             PageView.builder(
               controller: _pageController,
               itemCount: onboardingList.length,
@@ -68,7 +64,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
             ),
 
-            // ✅ زر Skip
             if (_currentIndex < onboardingList.length - 1)
               Positioned(
                 top: 20,
@@ -109,14 +104,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
 
-            // ✅ المؤشرات + الأزرار
             Positioned(
               bottom: 40,
               left: 0,
               right: 0,
               child: Column(
                 children: [
-                  // Dots
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
@@ -137,7 +130,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   ),
                   const SizedBox(height: 24),
 
-                  // زر التالي أو Let's Get Started
                   if (_currentIndex < onboardingList.length - 1)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
