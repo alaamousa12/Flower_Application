@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/create_account_step1.dart';
+// import 'package:quiz_app/screens/create_account_step1.dart';
 import 'package:quiz_app/widgets/custom_password_field.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
 import 'package:quiz_app/widgets/primary_button.dart';
@@ -15,7 +15,6 @@ class SigninScreen extends StatelessWidget {
     final passwordController = TextEditingController();
 
     return Scaffold(
-      
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
         child: SingleChildScrollView(
@@ -72,12 +71,12 @@ class SigninScreen extends StatelessWidget {
                   const Text("Don't have an account? "),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CreateAccountStep1(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const CreateAccountStep1(),
+                      //   ),
+                      // );
                     },
                     child: const Text(
                       "create account",
