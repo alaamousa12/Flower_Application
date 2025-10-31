@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
-// import 'create_account_step1.dart';
+import 'create_account_step1.dart';
 
 class CreateAccountStep2 extends StatefulWidget {
   const CreateAccountStep2({super.key});
@@ -34,8 +34,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
 
   //void _finishAccount
 
-  // void dispose() 
-  
+  // void dispose()
 
   @override
   Widget build(BuildContext context) {
@@ -193,12 +192,12 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     Expanded(
                       child: OutlinedButton(
                         onPressed: () {
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const CreateAccountStep1(),
-                          //   ),
-                          // );
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const CreateAccountStep1(),
+                            ),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 14),
