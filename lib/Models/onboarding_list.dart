@@ -1,4 +1,5 @@
-import '../models/onboarding_data.dart';
+import 'package:quiz_app/data/onboarding_data.dart';
+
 
 final List<OnboardingData> onboardingList = [
   const OnboardingData(
