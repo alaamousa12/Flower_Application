@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/models/onboarding_list.dart';
 import 'package:quiz_app/screens/signin_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// import '../data/onboarding_list.dart';
 import '../widgets/onboarding_item.dart';
 
 class OnboardingScreen extends StatefulWidget {
