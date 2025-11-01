@@ -13,7 +13,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController =
-      PageController(); // يتحكم في الـ PageView
+      PageController(); 
   int _currentIndex = 0;
 
   Future<void> _completeOnboarding() async {
