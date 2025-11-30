@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quiz_app/screens/home/main_navigation.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'create_account_step1.dart';
@@ -218,7 +219,14 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     const SizedBox(width: 15),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainNavigation(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pink,
                           padding: const EdgeInsets.symmetric(vertical: 14),

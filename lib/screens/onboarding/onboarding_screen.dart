@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/models/onboarding_list.dart';
-import 'package:quiz_app/screens/signin_screen.dart';
+import 'package:quiz_app/screens/auth/signin_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../widgets/onboarding_item.dart';
+import '../../widgets/onboarding_item.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -12,8 +12,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final PageController _pageController =
-      PageController(); 
+  final PageController _pageController = PageController();
   int _currentIndex = 0;
 
   Future<void> _completeOnboarding() async {
