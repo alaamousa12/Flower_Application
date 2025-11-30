@@ -33,9 +33,6 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
     }
   }
 
-  //void _finishAccount
-
-  // void dispose()
 
   @override
   Widget build(BuildContext context) {

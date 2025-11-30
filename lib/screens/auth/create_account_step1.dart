@@ -25,7 +25,6 @@ class _CreateAccountStep1State extends State<CreateAccountStep1> {
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
                 const Center(

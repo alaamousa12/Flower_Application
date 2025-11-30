@@ -13,7 +13,7 @@ class SpecialOffersSection extends StatefulWidget {
 class _SpecialOffersSectionState extends State<SpecialOffersSection> {
   final PageController _pageController = PageController(
     viewportFraction: 0.9,
-  ); // زودنا الحجم
+  );
   int _currentPage = 0;
 
   final List<String> specialOffers = [
@@ -55,7 +55,6 @@ class _SpecialOffersSectionState extends State<SpecialOffersSection> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // Title + See All
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
           child: Row(
@@ -120,7 +119,6 @@ class _SpecialOffersSectionState extends State<SpecialOffersSection> {
 
         const SizedBox(height: 15),
 
-        // Page Indicator
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(

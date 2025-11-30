@@ -19,12 +19,11 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           children: [
-            // Menu Icon
             _iconBox(icon: Icons.menu, onTap: () {}),
 
             const SizedBox(width: 14),
 
-            // Title
+            
             const Expanded(
               child: Center(
                 child: Text(
@@ -38,12 +37,10 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
 
-            // Notification icon
             _iconBox(icon: Icons.notifications_none_rounded, onTap: () {}),
 
             const SizedBox(width: 10),
 
-            // Cart icon
             _iconBox(icon: Icons.shopping_bag_outlined, onTap: () {}),
           ],
         ),
@@ -51,7 +48,7 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  // widget reusable
+  
   Widget _iconBox({required IconData icon, required VoidCallback onTap}) {
     return InkWell(
       onTap: onTap,

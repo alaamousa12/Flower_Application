@@ -32,7 +32,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     if (_currentIndex < onboardingList.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInOut, //تُستخدم لتحديد شكل (منحنى)
+        curve: Curves.easeInOut,
       );
     } else {
       _completeOnboarding();

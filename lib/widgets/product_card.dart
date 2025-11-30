@@ -61,7 +61,6 @@ class _ProductCardState extends State<ProductCard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // IMAGE + FAVORITE + DISCOUNT BADGE
               Stack(
                 children: [
                   Hero(
@@ -79,7 +78,6 @@ class _ProductCardState extends State<ProductCard> {
                     ),
                   ),
 
-                  // Favorite Button with Action
                   Positioned(
                     right: 10,
                     top: 10,
@@ -119,7 +117,6 @@ class _ProductCardState extends State<ProductCard> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // CATEGORY + RATING
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -153,7 +150,6 @@ class _ProductCardState extends State<ProductCard> {
 
                     const SizedBox(height: 6),
 
-                    // PRODUCT TITLE
                     Text(
                       widget.title,
                       maxLines: 1,
@@ -166,7 +162,6 @@ class _ProductCardState extends State<ProductCard> {
 
                     const SizedBox(height: 10),
 
-                    // PRICE + CART ICON
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -196,7 +191,6 @@ class _ProductCardState extends State<ProductCard> {
 
                     const SizedBox(height: 10),
 
-                    // DELIVERY STATUS (Available + Delivery)
                     Row(
                       children: [
                         Icon(
@@ -221,182 +215,3 @@ class _ProductCardState extends State<ProductCard> {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:iconly/iconly.dart';
-
-// class ProductCard extends StatefulWidget {
-//   final String image;
-//   final String title;
-//   final double price;
-//   final String category;
-//   final double rating;
-//   final bool discount;
-
-//   const ProductCard({
-//     super.key,
-//     required this.image,
-//     required this.title,
-//     required this.price,
-//     required this.category,
-//     required this.rating,
-//     required this.discount,
-//   });
-
-//   @override
-//   State<ProductCard> createState() => _ProductCardState();
-// }
-
-// class _ProductCardState extends State<ProductCard> {
-//   bool isFavorite = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       decoration: BoxDecoration(
-//         borderRadius: BorderRadius.circular(16),
-//         color: Colors.white,
-//         boxShadow: [
-//           BoxShadow(
-//             color: Colors.black12,
-//             blurRadius: 4,
-//             offset: const Offset(0, 1),
-//           ),
-//         ],
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           // IMAGE + FAV ICON
-//           Stack(
-//             children: [
-//               ClipRRect(
-//                 borderRadius: const BorderRadius.vertical(
-//                   top: Radius.circular(16),
-//                 ),
-//                 child: Image.asset(
-//                   widget.image,
-//                   height: 170,
-//                   width: double.infinity,
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-
-//               // Favorite Icon (TOP RIGHT)
-//               Positioned(
-//                 top: 10,
-//                 right: 10,
-//                 child: GestureDetector(
-//                   onTap: () {
-//                     setState(() => isFavorite = !isFavorite);
-//                   },
-//                   child: Container(
-//                     padding: const EdgeInsets.all(6),
-//                     decoration: BoxDecoration(
-//                       color: Colors.white.withOpacity(0.85),
-//                       shape: BoxShape.circle,
-//                       boxShadow: [
-//                         BoxShadow(
-//                           color: Colors.black12,
-//                           blurRadius: 5,
-//                         ),
-//                       ],
-//                     ),
-//                     child: Icon(
-//                       isFavorite ? IconlyBold.heart : IconlyLight.heart,
-//                       color: isFavorite ? Colors.red : Colors.black87,
-//                       size: 22,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-
-//               // DISCOUNT BADGE
-//               if (widget.discount)
-//                 Positioned(
-//                   top: 10,
-//                   left: 10,
-//                   child: Container(
-//                     padding:
-//                         const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-//                     decoration: BoxDecoration(
-//                       color: Colors.green.shade600,
-//                       borderRadius: BorderRadius.circular(12),
-//                     ),
-//                     child: const Text(
-//                       "-20%",
-//                       style: TextStyle(
-//                         color: Colors.white,
-//                         fontWeight: FontWeight.bold,
-//                         fontSize: 12,
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//             ],
-//           ),
-
-//           // TEXT DETAILS
-//           Padding(
-//             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-//             child: Column(
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Text(
-//                   widget.category,
-//                   style: TextStyle(
-//                     color: Colors.grey.shade600,
-//                     fontSize: 12,
-//                   ),
-//                 ),
-//                 const SizedBox(height: 4),
-//                 Text(
-//                   widget.title,
-//                   maxLines: 2,
-//                   overflow: TextOverflow.ellipsis,
-//                   style: const TextStyle(
-//                     fontWeight: FontWeight.w600,
-//                     fontSize: 14,
-//                   ),
-//                 ),
-//                 const SizedBox(height: 6),
-
-//                 // PRICE + RATING
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     Text(
-//                       "\$${widget.price}",
-//                       style: const TextStyle(
-//                         color: Colors.pink,
-//                         fontSize: 16,
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                     Row(
-//                       children: [
-//                         const Icon(
-//                           Icons.star,
-//                           color: Colors.amber,
-//                           size: 16,
-//                         ),
-//                         const SizedBox(width: 4),
-//                         Text(
-//                           widget.rating.toString(),
-//                           style: const TextStyle(
-//                             fontSize: 13,
-//                             fontWeight: FontWeight.w500,
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 )
-//               ],
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
