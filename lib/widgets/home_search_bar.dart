@@ -34,7 +34,6 @@ class HomeSearchBar extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            // Filter button
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(

@@ -34,17 +34,17 @@ class _ProductCardState extends State<ProductCard> {
       duration: const Duration(milliseconds: 500),
       child: GestureDetector(
         onTap: () {
-          Navigator.push(
-            context,
-            PageRouteBuilder(
-              transitionDuration: const Duration(milliseconds: 500),
-              pageBuilder: (_, __, ___) => ProductDetailsScreen(
-                image: widget.image,
-                title: widget.title,
-                price: widget.price,
-              ),
-            ),
-          );
+          // Navigator.push(
+          //   context,
+          //   PageRouteBuilder(
+          //     transitionDuration: const Duration(milliseconds: 500),
+          //     pageBuilder: (_, __, ___) => ProductDetailsScreen(
+          //       image: widget.image,
+          //       title: widget.title,
+          //       price: widget.price,
+          //     ),
+          //   ),
+          // );
         },
         child: Container(
           decoration: BoxDecoration(
