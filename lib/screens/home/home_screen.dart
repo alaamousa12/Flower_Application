@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/widgets/app_drawer.dart';
 import 'package:quiz_app/widgets/home_categories_section.dart';
 import 'package:quiz_app/widgets/products_grid.dart';
 import '../../widgets/custom_appbar.dart';
@@ -11,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const AppDrawer(),
       appBar: const CustomHomeAppBar(),
       body: SingleChildScrollView(
         child: Column(

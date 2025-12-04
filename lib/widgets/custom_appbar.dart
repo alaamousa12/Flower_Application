@@ -17,38 +17,41 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
       title: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Row(
-          children: [
-            _iconBox(icon: Icons.menu, onTap: () {}),
+        child: Builder(
+          builder: (context) => Row(
+            children: [
+              _iconBox(
+                icon: Icons.menu,
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
 
-            const SizedBox(width: 14),
+              const SizedBox(width: 14),
 
-            
-            const Expanded(
-              child: Center(
-                child: Text(
-                  "Flower Shop",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+              const Expanded(
+                child: Center(
+                  child: Text(
+                    "Flower Shop",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black87,
+                    ),
                   ),
                 ),
               ),
-            ),
 
-            _iconBox(icon: Icons.notifications_none_rounded, onTap: () {}),
-
-            const SizedBox(width: 10),
-
-            _iconBox(icon: Icons.shopping_bag_outlined, onTap: () {}),
-          ],
+              _iconBox(icon: Icons.notifications_none_rounded, onTap: () {}),
+              const SizedBox(width: 10),
+              _iconBox(icon: Icons.shopping_bag_outlined, onTap: () {}),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  
   Widget _iconBox({required IconData icon, required VoidCallback onTap}) {
     return InkWell(
       onTap: onTap,
