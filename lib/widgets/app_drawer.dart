@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/profile_screen.dart';
+import 'package:quiz_app/screens/cart/deliveryaddress.dart';
+import 'package:quiz_app/screens/profile/profile_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -118,7 +119,8 @@ class AppDrawer extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const UserProfileScreen(),
+                              builder: (context) =>
+                                  const UserProfileScreen(fromBottomNav: false),
                             ),
                           );
                         },
@@ -126,7 +128,14 @@ class AppDrawer extends StatelessWidget {
                       _menuItem(
                         icon: Icons.location_on_outlined,
                         text: "Delivery Address",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DeliveryAddressScreen(),
+                            ),
+                          );
+                        },
                       ),
                       _menuItem(
                         icon: Icons.favorite_outline,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:quiz_app/screens/cart/your_cart_screen.dart';
 import 'package:quiz_app/screens/orders/my_orders_screen.dart';
-import 'package:quiz_app/screens/profile_screen.dart';
+import 'package:quiz_app/screens/profile/profile_screen.dart';
 import '../home/home_screen.dart';
 import '../favorites/favorites_screen.dart';
 
@@ -18,13 +18,23 @@ class _MainNavigationState extends State<MainNavigation> {
 
   final PageController _pageController = PageController();
 
-  final List<Widget> _pages = const [
-    HomeScreen(),
-    FavoritesScreen(),
-    CartScreen(),
-    OrdersScreen(),
-    UserProfileScreen(),
+  late final List<Widget> _pages;
+
+@override
+void initState() {
+  super.initState();
+  _pages = [
+    const HomeScreen(),
+    const FavoritesScreen(),
+    const CartScreen(),
+    const OrdersScreen(),
+    UserProfileScreen(
+      fromBottomNav: true,
+      controller: _pageController,
+    ),
   ];
+}
+
 
   @override
   Widget build(BuildContext context) {
