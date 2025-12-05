@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:quiz_app/screens/auth/signin_screen.dart';
-import 'package:quiz_app/screens/home/main_navigation.dart';
+import 'package:quiz_app/widgets/home_wrapper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../onboarding/onboarding_screen.dart';
 
@@ -21,33 +21,32 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateNext() async {
-    final prefs = await SharedPreferences.getInstance();
+    // الانتظار 4 ثواني قبل الانتقال
+    await Future.delayed(const Duration(seconds: 8));
 
+    final prefs = await SharedPreferences.getInstance();
     final bool? seenOnboarding = prefs.getBool('onboarding');
     final bool? isLoggedIn = prefs.getBool('isLoggedIn');
 
-    Timer(const Duration(seconds: 4), () {
-      if (seenOnboarding == null || seenOnboarding == false) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const OnboardingScreen()),
-        );
-        return;
-      }
-
-      if (isLoggedIn == null || isLoggedIn == false) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const SigninScreen()),
-        );
-        return;
-      }
-
+    if (seenOnboarding == null || seenOnboarding == false) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const MainNavigation()),
+        MaterialPageRoute(builder: (_) => const OnboardingScreen()),
       );
-    });
+      return;
+    }
+
+    if (isLoggedIn == true) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const HomeWrapper()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const SigninScreen()),
+      );
+    }
   }
 
   @override
