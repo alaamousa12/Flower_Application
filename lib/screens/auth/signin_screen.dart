@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/auth/create_account_step1.dart';
-import 'package:quiz_app/screens/home/main_navigation.dart';
 import 'package:quiz_app/widgets/custom_password_field.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
+import 'package:quiz_app/widgets/home_wrapper.dart';
 import 'package:quiz_app/widgets/primary_button.dart';
 import 'package:quiz_app/widgets/social_button.dart';
 import 'package:quiz_app/widgets/divider_text.dart';
@@ -60,7 +60,7 @@ class SigninScreen extends StatelessWidget {
 
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (_) => const MainNavigation()),
+                    MaterialPageRoute(builder: (_) => const HomeWrapper()),
                   );
                 },
               ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:quiz_app/screens/products/product_detail_screen.dart';
 
 class ProductCard extends StatefulWidget {
   final String image;

@@ -1,8 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quiz_app/screens/home/main_navigation.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
+import 'package:quiz_app/widgets/home_wrapper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import 'create_account_step1.dart';
 
@@ -32,7 +33,6 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -216,11 +216,13 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     const SizedBox(width: 15),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          await prefs.setBool('isLoggedIn', true);
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const MainNavigation(),
+                              builder: (context) => const HomeWrapper(),
                             ),
                           );
                         },

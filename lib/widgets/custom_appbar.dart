@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomHomeAppBar({super.key});
@@ -23,7 +24,7 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               _iconBox(
                 icon: Icons.menu,
                 onTap: () {
-                  Scaffold.of(context).openDrawer();
+                  ZoomDrawer.of(context)?.toggle();
                 },
               ),
 
@@ -67,3 +68,4 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+
