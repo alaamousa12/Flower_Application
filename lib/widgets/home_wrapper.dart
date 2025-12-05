@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import 'package:quiz_app/screens/home/home_screen.dart';
+import 'package:quiz_app/screens/home/main_navigation.dart';
 import 'package:quiz_app/widgets/app_drawer.dart';
 
 class HomeWrapper extends StatelessWidget {
@@ -12,7 +12,7 @@ class HomeWrapper extends StatelessWidget {
       backgroundColor: Colors.pink.shade50,
       body: ZoomDrawer(
         menuScreen: const AppDrawer(),
-        mainScreen: const HomeScreen(),
+        mainScreen: const MainNavigation(),
 
         angle: -10,
         borderRadius: 35,

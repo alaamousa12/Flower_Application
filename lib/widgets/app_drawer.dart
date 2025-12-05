@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/profile/profile_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -113,7 +114,14 @@ class AppDrawer extends StatelessWidget {
                       _menuItem(
                         icon: Icons.person_outline,
                         text: "Profile",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const UserProfileScreen(),
+                            ),
+                          );
+                        },
                       ),
                       _menuItem(
                         icon: Icons.location_on_outlined,

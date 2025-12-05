@@ -23,7 +23,7 @@ class _MainNavigationState extends State<MainNavigation> {
     FavoritesScreen(),
     CartScreen(),
     OrdersScreen(),
-    ProfileScreen(),
+    UserProfileScreen(),
   ];
 
   @override
