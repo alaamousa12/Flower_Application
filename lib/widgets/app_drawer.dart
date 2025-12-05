@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/cart/deliveryaddress.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
+import 'package:quiz_app/screens/setting/setting_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -196,7 +197,14 @@ class AppDrawer extends StatelessWidget {
                       _menuItem(
                         icon: Icons.settings_outlined,
                         text: "Settings",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SettingsScreen(),
+                            ),
+                          );
+                        },
                       ),
 
                       const SizedBox(height: 20),
