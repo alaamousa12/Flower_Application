@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-// import 'package:quiz_app/screens/products/special_offers_screen.dart';
+import 'package:quiz_app/screens/products/special_offers_screen.dart';
 
 class SpecialOffersSection extends StatefulWidget {
   const SpecialOffersSection({super.key});
@@ -11,9 +10,7 @@ class SpecialOffersSection extends StatefulWidget {
 }
 
 class _SpecialOffersSectionState extends State<SpecialOffersSection> {
-  final PageController _pageController = PageController(
-    viewportFraction: 0.9,
-  );
+  final PageController _pageController = PageController(viewportFraction: 0.9);
   int _currentPage = 0;
 
   final List<String> specialOffers = [
@@ -67,10 +64,12 @@ class _SpecialOffersSectionState extends State<SpecialOffersSection> {
 
               GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (_) => const SpecialOffersPage()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SpecialOffersPage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   "See All",

@@ -20,21 +20,17 @@ class _MainNavigationState extends State<MainNavigation> {
 
   late final List<Widget> _pages;
 
-@override
-void initState() {
-  super.initState();
-  _pages = [
-    const HomeScreen(),
-    const FavoritesScreen(),
-    const CartScreen(),
-    const OrdersScreen(),
-    UserProfileScreen(
-      fromBottomNav: true,
-      controller: _pageController,
-    ),
-  ];
-}
-
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      const HomeScreen(),
+      const FavoritesScreen(),
+      const CartScreen(),
+      const OrdersScreen(),
+      // Profile مش داخل الـ PageView لأنه هيتفتح صفحة جديدة
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,9 +55,31 @@ void initState() {
         ),
         child: BottomNavigationBar(
           currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() => _currentIndex = index);
-            _pageController.jumpToPage(index);
+          onTap: (index) async {
+            if (index == 4) {
+              // لو ضغط على Profile → افتح صفحة مستقلة
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const UserProfileScreen(fromBottomNav: true),
+                ),
+              );
+
+              // بعد الرجوع من Profile → نرجع Home
+              if (!mounted) return;
+              setState(() {
+                _currentIndex = 0;
+                _pageController.jumpToPage(0);
+              });
+
+              return; // مهم جداً
+            }
+
+            // أي Tab تاني
+            setState(() {
+              _currentIndex = index;
+              _pageController.jumpToPage(index);
+            });
           },
 
           type: BottomNavigationBarType.fixed,

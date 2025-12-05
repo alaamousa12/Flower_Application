@@ -238,7 +238,76 @@ class AppDrawer extends StatelessWidget {
                                 color: Colors.red,
                               ),
                             ),
-                            onTap: () {},
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    title: const Text(
+                                      "Logout",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    content: const Text(
+                                      "Are you sure you want to log out?",
+                                    ),
+                                    actionsPadding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 8,
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                          context,
+                                        ), // لغلق الـ dialog
+                                        style: TextButton.styleFrom(
+                                          backgroundColor: Colors.grey.shade200,
+                                          foregroundColor: Colors.black87,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                            vertical: 12,
+                                          ),
+                                        ),
+                                        child: const Text("Cancel"),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(
+                                            context,
+                                          ); // غلق الـ dialog
+                                          // هنا تضيف أي عملية تسجيل خروج
+                                          debugPrint("User Logged Out!");
+                                        },
+                                        style: TextButton.styleFrom(
+                                          backgroundColor: Colors.grey.shade700,
+                                          foregroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(
+                                              12,
+                                            ),
+                                          ),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 20,
+                                            vertical: 12,
+                                          ),
+                                        ),
+                                        child: const Text("Yes, Logout"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),

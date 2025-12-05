@@ -1,15 +1,10 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:quiz_app/widgets/custom_text_field.dart';
 import 'package:quiz_app/widgets/primary_button.dart';
-
-// class UserProfileScreen extends StatefulWidget {
-//   const UserProfileScreen({super.key});
-
-//   @override
-//   State<UserProfileScreen> createState() => _UserProfileScreenState();
-// }
 
 class UserProfileScreen extends StatefulWidget {
   final bool fromBottomNav;
@@ -68,16 +63,10 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            if (widget.fromBottomNav) {
-              // يرجع للصفحة رقم 0 (Home)
-              widget.controller?.jumpToPage(0);
-            } else {
-              // راجع للـ Drawer
-              Navigator.pop(context);
-            }
+            // فقط نرجع للصفحة السابقة
+            Navigator.pop(context);
           },
         ),
-
         title: const Text(
           'Your Profile',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -159,7 +148,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   const SizedBox(height: 20),
 
                   /// -----------------------------
-                  /// GENDER DROPDOWN (برا الـ CustomTextField)
+                  /// GENDER DROPDOWN
                   Text(
                     "Gender",
                     style: TextStyle(
