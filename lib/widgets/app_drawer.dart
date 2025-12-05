@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/profile/profile_screen.dart';
+// import 'package:quiz_app/screens/profile/profile_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -110,17 +110,16 @@ class AppDrawer extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Column(
                     children: [
-                      // Menu Items مع تعديلات بسيطة
                       _menuItem(
                         icon: Icons.person_outline,
                         text: "Profile",
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const UserProfileScreen(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     builder: (context) => const UserProfileScreen(),
+                          //   ),
+                          // );
                         },
                       ),
                       _menuItem(

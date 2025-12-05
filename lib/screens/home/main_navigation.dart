@@ -4,7 +4,7 @@ import 'package:quiz_app/screens/cart/your_cart_screen.dart';
 import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import '../home/home_screen.dart';
 import '../favorites/favorites_screen.dart';
-import '../profile/profile_screen.dart';
+// import '../profile/profile_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -23,7 +23,7 @@ class _MainNavigationState extends State<MainNavigation> {
     FavoritesScreen(),
     CartScreen(),
     OrdersScreen(),
-    UserProfileScreen(),
+    // UserProfileScreen(),
   ];
 
   @override
