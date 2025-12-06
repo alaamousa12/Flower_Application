@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:quiz_app/screens/cart/your_cart_screen.dart';
+import 'package:quiz_app/screens/cart/cart_page.dart';
+// import 'package:quiz_app/screens/cart/cart_screen.dart';
 import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
 import '../home/home_screen.dart';
@@ -23,13 +24,7 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   void initState() {
     super.initState();
-    _pages = [
-      const HomeScreen(),
-      const FavoritesScreen(),
-      const CartScreen(),
-      const OrdersScreen(),
-      // Profile مش داخل الـ PageView لأنه هيتفتح صفحة جديدة
-    ];
+    _pages = [const HomeScreen(), const FavoritesScreen(), const CartPage()];
   }
 
   @override
@@ -57,7 +52,6 @@ class _MainNavigationState extends State<MainNavigation> {
           currentIndex: _currentIndex,
           onTap: (index) async {
             if (index == 4) {
-              // لو ضغط على Profile → افتح صفحة مستقلة
               await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -65,17 +59,28 @@ class _MainNavigationState extends State<MainNavigation> {
                 ),
               );
 
-              // بعد الرجوع من Profile → نرجع Home
               if (!mounted) return;
               setState(() {
                 _currentIndex = 0;
                 _pageController.jumpToPage(0);
               });
-
-              return; // مهم جداً
+              return;
             }
 
-            // أي Tab تاني
+            if (index == 3) {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const MyOrdersScreen()),
+              );
+
+              if (!mounted) return;
+              setState(() {
+                _currentIndex = 0;
+                _pageController.jumpToPage(0);
+              });
+              return;
+            }
+
             setState(() {
               _currentIndex = index;
               _pageController.jumpToPage(index);

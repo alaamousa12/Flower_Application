@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/setting/notification_setting.dart';
 import 'package:quiz_app/screens/setting/password_manage_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -84,10 +85,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //---------------------------------------------------------
             // NOTIFICATIONS
             //---------------------------------------------------------
+            // _settingTile(
+            //   icon: Icons.notifications_none,
+            //   title: "Notifications",
+            //   trailing: Icon(Icons.notifications_active, color: Colors.amber),
+            // ),
             _settingTile(
               icon: Icons.notifications_none,
               title: "Notifications",
-              trailing: Icon(Icons.notifications_active, color: Colors.amber),
+              trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationSettingsPage(),
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 16),

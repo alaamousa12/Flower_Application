@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/Payment/payment_success.dart';
 import '../Payment/add_card.dart';
 
 // تعريف الـ Enum لتحديد طريقة الدفع المختارة
@@ -111,7 +112,14 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
         child: SizedBox(
           height: 60,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PaymentSuccessfulScreen(),
+                ),
+              );
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: pinkButtonColor,
               shape: RoundedRectangleBorder(

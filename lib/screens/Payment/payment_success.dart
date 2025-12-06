@@ -62,7 +62,7 @@ class PaymentSuccessfulScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const OrdersScreen(),
+                        builder: (context) => const MyOrdersScreen(),
                       ),
                     );
                   },

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/Payment/payment_method.dart';
 import 'package:quiz_app/screens/cart/deliveryaddress.dart';
 import 'package:quiz_app/screens/favorites/favorites_screen.dart';
+import 'package:quiz_app/screens/notifications/notification_page.dart';
+import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
 import 'package:quiz_app/screens/setting/setting_screen.dart';
 
@@ -157,13 +159,27 @@ class AppDrawer extends StatelessWidget {
                         icon: Icons.shopping_bag_outlined,
                         text: "My Orders",
 
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyOrdersScreen(),
+                            ),
+                          );
+                        },
                       ),
                       _menuItem(
                         icon: Icons.notifications_outlined,
                         text: "Notifications",
 
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationPage(),
+                            ),
+                          );
+                        },
                       ),
 
                       // Divider
