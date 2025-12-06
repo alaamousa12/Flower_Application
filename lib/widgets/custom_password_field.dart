@@ -35,7 +35,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
           controller: widget.controller,
           obscureText: _obscure,
           decoration: InputDecoration(
-            filled: true, // خلفية الحقل
+            filled: true,
             fillColor: Colors.grey.shade200,
             suffixIcon: IconButton(
               icon: Icon(
@@ -43,17 +43,14 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
                 color: Colors.grey,
               ),
               onPressed: () {
-                setState(() => _obscure = !_obscure); // تبديل بين إخفاء/إظهار
+                setState(() => _obscure = !_obscure);
               },
             ),
 
-            // 🔹 الحواف أثناء التركيز (لما تضغط وتبدأ تكتب)
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.pink, width: 2),
             ),
-
-            // 🔹 ممكن تسيبها لو مش عايز حدود دائمة
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
           ),
         ),

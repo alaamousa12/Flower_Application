@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/create_account_step1.dart';
+import 'package:quiz_app/screens/auth/create_account_step1.dart';
 import 'package:quiz_app/widgets/custom_password_field.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
+import 'package:quiz_app/widgets/home_wrapper.dart';
 import 'package:quiz_app/widgets/primary_button.dart';
 import 'package:quiz_app/widgets/social_button.dart';
 import 'package:quiz_app/widgets/divider_text.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SigninScreen extends StatelessWidget {
   const SigninScreen({super.key});
@@ -50,7 +52,19 @@ class SigninScreen extends StatelessWidget {
               ),
 
               const SizedBox(height: 8),
-              PrimaryButton(text: "Sign In", onPressed: () {}),
+              PrimaryButton(
+                text: "Sign In",
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setBool('isLoggedIn', true);
+
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const HomeWrapper()),
+                  );
+                },
+              ),
+
               const SizedBox(height: 30),
               const DividerText(text: "Or sign in with"),
               const SizedBox(height: 20),

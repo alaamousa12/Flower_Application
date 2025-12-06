@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/screens/create_account_step2.dart';
+import 'package:quiz_app/screens/auth/create_account_step2.dart';
 import 'package:quiz_app/widgets/custom_password_field.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -25,7 +25,6 @@ class _CreateAccountStep1State extends State<CreateAccountStep1> {
           padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
                 const Center(
