@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Payment/add_card.dart';
+
 // تعريف الـ Enum لتحديد طريقة الدفع المختارة
 enum PaymentOption { cash, wallet, card }
 
@@ -11,12 +12,10 @@ class PaymentMethodsScreen extends StatefulWidget {
 }
 
 class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
-  // الحالة لتتبع الخيار المحدد، القيمة الافتراضية هي الدفع نقدًا
   PaymentOption? _selectedOption = PaymentOption.cash;
 
-  // لون الزر الرئيسي (الوردي المشابه للصورة)
   static const Color pinkButtonColor = Color(0xFFF06292);
-  // لون أيقونات البطاقة والخطوط
+
   static const Color cardIconColor = Color(0xFF4C5874);
 
   @override
@@ -43,11 +42,10 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // 1. قسم الدفع النقدي (Cash)
             _buildSectionTitle('Cash'),
             _buildPaymentOption(
-              icon: Icons.monetization_on, // أيقونة العملة
-              iconColor: Colors.green, // لون مختلف لأيقونة النقد
+              icon: Icons.monetization_on,
+              iconColor: Colors.green,
               title: 'Cash',
               value: PaymentOption.cash,
               onChanged: (val) {
@@ -59,50 +57,48 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
 
             const SizedBox(height: 20),
 
-            // 2. قسم المحفظة/إنستاباي (Wallet Or instapay)
             _buildSectionTitle('Wallet Or instapay: 01234672455'),
             _buildPaymentOption(
-              icon: Icons.receipt_long, // أيقونة الإيصال أو المحفظة
+              icon: Icons.receipt_long,
               iconColor: cardIconColor,
               title: 'Receipt Number',
               value: PaymentOption.wallet,
-              // يتم تمرير دالة فارغة لأن هذا الحقل قد يكون للإدخال وليس فقط اختيار
               onChanged: (val) {
                 setState(() {
                   _selectedOption = val;
                 });
               },
-              isInput: true, // للإشارة إلى أن هذا الحقل هو إدخال نصي
+              isInput: true,
             ),
 
             const SizedBox(height: 20),
 
-            // 3. قسم بطاقة الائتمان/الخصم (Credit & Debit Card)
             _buildSectionTitle('Credit & Debit Card'),
 
-            // زر "Select Card" (اختيار بطاقة محفوظة)
             _buildCardAction(
-                icon: Icons.credit_card,
-                title: 'Select Card',
-                showDropdown: true,
-                onTap: () {
-                  setState(() {
-                    _selectedOption = PaymentOption.card;
-                  });
-                  // كود فتح قائمة اختيار البطاقات المحفوظة
-                }
+              icon: Icons.credit_card,
+              title: 'Select Card',
+              showDropdown: true,
+              onTap: () {
+                setState(() {
+                  _selectedOption = PaymentOption.card;
+                });
+              },
             ),
             const SizedBox(height: 10),
 
-            // زر "Add Card" (إضافة بطاقة جديدة)
             _buildCardAction(
-                icon: Icons.credit_card,
-                title: 'Add Card',
-                color: Colors.red[300], // لون النص "Add Card"
-                onTap: () {
-                  // كود الانتقال إلى شاشة "Add Card"
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => const AddCardScreen()));
-                }
+              icon: Icons.credit_card,
+              title: 'Add Card',
+              color: Colors.red[300],
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AddCardScreen(),
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 50),
@@ -110,15 +106,12 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
         ),
       ),
 
-      // زر تأكيد الدفع الثابت في الأسفل
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
         child: SizedBox(
           height: 60,
           child: ElevatedButton(
-            onPressed: () {
-              // كود تأكيد الدفع بناءً على _selectedOption
-            },
+            onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: pinkButtonColor,
               shape: RoundedRectangleBorder(
@@ -127,7 +120,11 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
             ),
             child: const Text(
               'Confirm Payment',
-              style: TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -135,7 +132,6 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  // دالة مساعدة لإنشاء عنوان القسم
   Widget _buildSectionTitle(String title) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12.0),
@@ -150,7 +146,6 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  // دالة مساعدة لإنشاء خيار الدفع (Cash, Wallet)
   Widget _buildPaymentOption({
     required IconData icon,
     required Color iconColor,
@@ -164,9 +159,10 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          // تظليل الخيار المحدد باللون الوردي الفاتح
-            color: _selectedOption == value ? pinkButtonColor.withOpacity(0.5) : Colors.grey[200]!,
-            width: 1.5
+          color: _selectedOption == value
+              ? pinkButtonColor.withOpacity(0.5)
+              : Colors.grey[200]!,
+          width: 1.5,
         ),
       ),
       child: Padding(
@@ -179,17 +175,20 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
             Expanded(
               child: isInput
                   ? TextField(
-                decoration: InputDecoration(
-                  hintText: title,
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                ),
-                keyboardType: TextInputType.number,
-              )
+                      decoration: InputDecoration(
+                        hintText: title,
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.zero,
+                      ),
+                      keyboardType: TextInputType.number,
+                    )
                   : Text(
-                title,
-                style: const TextStyle(fontSize: 16, color: Colors.black87),
-              ),
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.black87,
+                      ),
+                    ),
             ),
 
             Radio<PaymentOption>(
@@ -204,7 +203,6 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
     );
   }
 
-  // دالة مساعدة لإنشاء أزرار البطاقة (Select Card, Add Card)
   Widget _buildCardAction({
     required IconData icon,
     required String title,
@@ -217,7 +215,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
       child: Container(
         height: 55,
         decoration: BoxDecoration(
-          color: Colors.grey[100], // لون خلفية خفيف
+          color: Colors.grey[100],
           borderRadius: BorderRadius.circular(12),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -228,15 +226,16 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
 
             Text(
               title,
-              style: TextStyle(
-                fontSize: 16,
-                color: color ?? Colors.black87,
-              ),
+              style: TextStyle(fontSize: 16, color: color ?? Colors.black87),
             ),
             const Spacer(),
 
             if (showDropdown)
-              const Icon(Icons.keyboard_arrow_up, color: cardIconColor, size: 20),
+              const Icon(
+                Icons.keyboard_arrow_up,
+                color: cardIconColor,
+                size: 20,
+              ),
           ],
         ),
       ),

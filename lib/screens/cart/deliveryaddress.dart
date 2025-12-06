@@ -39,12 +39,7 @@ class DeliveryAddressScreen extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.all(20.0),
                 children: [
-
-                  CustomTextField(
-
-                    label: 'Name',
-                    controller: nameController,
-                  ),
+                  CustomTextField(label: 'Name', controller: nameController),
                   const SizedBox(height: 20),
 
                   CustomTextField(
@@ -60,10 +55,7 @@ class DeliveryAddressScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
 
-                  CustomTextField(
-                    label: 'City',
-                    controller: cityController,
-                  ),
+                  CustomTextField(label: 'City', controller: cityController),
                   const SizedBox(height: 20),
 
                   CustomTextField(
@@ -84,7 +76,11 @@ class DeliveryAddressScreen extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.only(
-                  left: 20, right: 20, bottom: 30, top: 10),
+                left: 20,
+                right: 20,
+                bottom: 30,
+                top: 10,
+              ),
               child: PrimaryButton(
                 text: 'SAVE ADDRESS',
                 color: Colors.pink,
