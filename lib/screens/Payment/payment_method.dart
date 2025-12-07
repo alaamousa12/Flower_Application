@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/screens/Payment/payment_success.dart';
 import '../Payment/add_card.dart';
 
-// تعريف الـ Enum لتحديد طريقة الدفع المختارة
 enum PaymentOption { cash, wallet, card }
 
 class PaymentMethodsScreen extends StatefulWidget {

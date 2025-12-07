@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../contactus//contactus_screen.dart';
+import 'contactus_screen.dart';
 
-// 📌 شاشة مركز المساعدة الرئيسية
 class HelpCenterScreen extends StatefulWidget {
   const HelpCenterScreen({super.key});
 
@@ -18,13 +17,10 @@ class _HelpCenterScreenState extends State<HelpCenterScreen>
     super.initState();
     tabController = TabController(length: 2, vsync: this);
 
-    // 👇 لما المستخدم يختار تاب Contact Us → افتح شاشة جديدة
     tabController.addListener(() {
       if (tabController.index == 1) {
-        // رجّع التاب على FAQ بدل ما يفضل واقف على Contact Us
         tabController.index = 0;
 
-        // فتح شاشة Contact Us
         Future.delayed(Duration.zero, () {
           Navigator.push(
             context,

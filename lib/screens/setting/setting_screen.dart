@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/help/help_center_screen.dart';
 import 'package:quiz_app/screens/setting/notification_setting.dart';
 import 'package:quiz_app/screens/setting/password_manage_screen.dart';
 
@@ -60,18 +61,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //   title: "Help Center",
             //   trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
             // ),
-
             _settingTile(
               icon: Icons.help_outline,
               title: "Help Center",
               trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => PasswordManagerScreen(),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelpCenterScreen()),
+                );
               },
             ),
 
@@ -99,7 +97,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //---------------------------------------------------------
             // NOTIFICATIONS
             //---------------------------------------------------------
-            
             _settingTile(
               icon: Icons.notifications_none,
               title: "Notifications",
