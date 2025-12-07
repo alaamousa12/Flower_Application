@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:quiz_app/screens/cart/cart_page.dart';
-// import 'package:quiz_app/screens/cart/cart_screen.dart';
+import 'package:quiz_app/screens/cart/your_cart.dart';
 import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
 import '../home/home_screen.dart';
@@ -24,7 +23,7 @@ class _MainNavigationState extends State<MainNavigation> {
   @override
   void initState() {
     super.initState();
-    _pages = [const HomeScreen(), const FavoritesScreen(), const CartPage()];
+    _pages = [const HomeScreen(), const FavoritesScreen(), const YourCart()];
   }
 
   @override

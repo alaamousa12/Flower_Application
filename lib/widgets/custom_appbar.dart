@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:quiz_app/screens/notifications/notification_page.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomHomeAppBar({super.key});
@@ -43,7 +44,15 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
 
-              _iconBox(icon: Icons.notifications_none_rounded, onTap: () {}),
+              _iconBox(
+                icon: Icons.notifications_none_rounded,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => NotificationPage()),
+                  );
+                },
+              ),
               const SizedBox(width: 10),
               _iconBox(icon: Icons.shopping_bag_outlined, onTap: () {}),
             ],
@@ -68,15 +77,6 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
