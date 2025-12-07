@@ -55,10 +55,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //---------------------------------------------------------
             // HELP CENTER
             //---------------------------------------------------------
+            // _settingTile(
+            //   icon: Icons.help_outline,
+            //   title: "Help Center",
+            //   trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+            // ),
+
             _settingTile(
               icon: Icons.help_outline,
               title: "Help Center",
               trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+              onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => PasswordManagerScreen(),
+                //   ),
+                // );
+              },
             ),
 
             _divider(),
@@ -85,11 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //---------------------------------------------------------
             // NOTIFICATIONS
             //---------------------------------------------------------
-            // _settingTile(
-            //   icon: Icons.notifications_none,
-            //   title: "Notifications",
-            //   trailing: Icon(Icons.notifications_active, color: Colors.amber),
-            // ),
+            
             _settingTile(
               icon: Icons.notifications_none,
               title: "Notifications",
