@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/help/help_center_screen.dart';
+import 'package:quiz_app/screens/setting/notification_setting.dart';
 import 'package:quiz_app/screens/setting/password_manage_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -54,10 +56,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
             //---------------------------------------------------------
             // HELP CENTER
             //---------------------------------------------------------
+            // _settingTile(
+            //   icon: Icons.help_outline,
+            //   title: "Help Center",
+            //   trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+            // ),
             _settingTile(
               icon: Icons.help_outline,
               title: "Help Center",
               trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HelpCenterScreen()),
+                );
+              },
             ),
 
             _divider(),
@@ -87,7 +100,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
             _settingTile(
               icon: Icons.notifications_none,
               title: "Notifications",
-              trailing: Icon(Icons.notifications_active, color: Colors.amber),
+              trailing: Icon(Icons.arrow_forward_ios, size: 16, color: primary),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationSettingsPage(),
+                  ),
+                );
+              },
             ),
 
             const SizedBox(height: 16),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/screens/Payment/payment_method.dart';
 import 'package:quiz_app/screens/cart/deliveryaddress.dart';
+import 'package:quiz_app/screens/favorites/favorites_screen.dart';
+import 'package:quiz_app/screens/notifications/notification_page.dart';
+import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
 import 'package:quiz_app/screens/setting/setting_screen.dart';
 
@@ -142,19 +146,40 @@ class AppDrawer extends StatelessWidget {
                         icon: Icons.favorite_outline,
                         text: "My Favorites",
 
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FavoritesScreen(),
+                            ),
+                          );
+                        },
                       ),
                       _menuItem(
                         icon: Icons.shopping_bag_outlined,
                         text: "My Orders",
 
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyOrdersScreen(),
+                            ),
+                          );
+                        },
                       ),
                       _menuItem(
                         icon: Icons.notifications_outlined,
                         text: "Notifications",
 
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationPage(),
+                            ),
+                          );
+                        },
                       ),
 
                       // Divider
@@ -173,7 +198,14 @@ class AppDrawer extends StatelessWidget {
                       _menuItem(
                         icon: Icons.credit_card_outlined,
                         text: "Payment Methods",
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PaymentMethodsScreen(),
+                            ),
+                          );
+                        },
                       ),
 
                       // Divider
