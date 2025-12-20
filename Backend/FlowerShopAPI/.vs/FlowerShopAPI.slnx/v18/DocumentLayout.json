@@ -1,0 +1,708 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\specialofferdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\specialofferdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\paymentmethoddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\paymentmethoddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\favoritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\favoritescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\data\\flowershopdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\data\\flowershopdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\flowershopdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\flowershopdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\updateuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\resetpassworddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\dtos\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\dtos\\createorderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\seller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\seller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\productimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\favorite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\paymentmethodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\paymentmethodscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\controllers\\addressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\controllers\\addressescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251206005017_v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251206005017_v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251205234017_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251205234017_v1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251217014819_payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251217014819_payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251217002845_update1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251217002845_update1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251216223419_validation2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251216223419_validation2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251218133242_addroletousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251218133242_addroletousers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|e:\\dtu\\four year it department of software 2026\\semester 1\\mobile app 2\\flowershopapi\\flowershopapi\\migrations\\20251218212155_over.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E1134BD2-B966-54C5-E790-D0D97361B610}|FlowerShopAPI\\FlowerShopAPI.csproj|solutionrelative:flowershopapi\\migrations\\20251218212155_over.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 460,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SpecialOfferDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\SpecialOfferDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\SpecialOfferDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\SpecialOfferDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\SpecialOfferDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T20:55:24.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\UserDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\UserDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\UserDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T23:31:56.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\User.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\User.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\User.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\User.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAswDEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:09:15.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\appsettings.json",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\appsettings.json",
+              "RelativeToolTip": "FlowerShopAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T21:29:15.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Program.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Program.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Program.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T21:22:00.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswBYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:32:05.994Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PaymentMethodDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\PaymentMethodDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\PaymentMethodDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\PaymentMethodDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\PaymentMethodDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T01:02:47.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\LoginDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\LoginDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\LoginDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:32:18.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FavoritesController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\FavoritesController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\FavoritesController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\FavoritesController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\FavoritesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:35:41.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FlowerShopDbContext.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Data\\FlowerShopDbContext.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Data\\FlowerShopDbContext.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Data\\FlowerShopDbContext.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Data\\FlowerShopDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:33:09.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Properties\\launchSettings.json",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "FlowerShopAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAswA8AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T23:32:37.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\ProductsController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAwwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:11:03.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Category.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Category.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Category.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Category.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:11:55.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Product.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Product.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Product.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Product.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAqwC8AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:13:21.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\CategoriesController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAowCEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T23:46:50.767Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ResetPasswordDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\ResetPasswordDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\ResetPasswordDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\ResetPasswordDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\ResetPasswordDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T06:01:23.489Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "20251218212155_over.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251218212155_over.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251218212155_over.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251218212155_over.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251218212155_over.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T21:21:55.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "UpdateUserDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\UpdateUserDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\UpdateUserDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\UpdateUserDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\UpdateUserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T23:28:52.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CreateOrderDto.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\CreateOrderDto.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Dtos\\CreateOrderDto.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Dtos\\CreateOrderDto.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Dtos\\CreateOrderDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T20:45:52.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\OrdersController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\OrdersController.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAIwK8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:41:59.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "20251218133242_AddRoleToUsers.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251218133242_AddRoleToUsers.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251218133242_AddRoleToUsers.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251218133242_AddRoleToUsers.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251218133242_AddRoleToUsers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T13:32:42.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "OrderItem.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\OrderItem.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\OrderItem.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\OrderItem.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\OrderItem.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAwwBkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:21:29.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Order.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Order.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Order.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Order.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:20:33.376Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Notification.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Notification.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Notification.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAwwBgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:23:59.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\NotificationsController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAQwFoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:40:24.048Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ProductImage.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\ProductImage.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\ProductImage.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\ProductImage.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\ProductImage.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:17:06.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Review.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Review.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Review.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Review.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Review.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAqwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:18:38.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Seller.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Seller.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Seller.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Seller.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Seller.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:10:44.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "PaymentMethod.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\PaymentMethod.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\PaymentMethod.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\PaymentMethod.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\PaymentMethod.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:24:53.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Favorite.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Favorite.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Favorite.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Favorite.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Favorite.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:23:00.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Address.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Address.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Models\\Address.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Models\\Address.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Models\\Address.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T22:19:38.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PaymentMethodsController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\PaymentMethodsController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\PaymentMethodsController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\PaymentMethodsController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\PaymentMethodsController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAwwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T01:05:53.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "AddressesController.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\AddressesController.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Controllers\\AddressesController.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Controllers\\AddressesController.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Controllers\\AddressesController.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAQwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T01:25:33.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "20251217014819_payment.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251217014819_payment.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251217014819_payment.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251217014819_payment.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251217014819_payment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T01:48:19.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "20251217002845_update1.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251217002845_update1.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251217002845_update1.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251217002845_update1.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251217002845_update1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-17T00:28:46.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "20251216223419_validation2.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251216223419_validation2.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251216223419_validation2.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251216223419_validation2.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251216223419_validation2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T22:34:19.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "20251206005017_V2.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251206005017_V2.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251206005017_V2.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251206005017_V2.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251206005017_V2.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T00:50:17.52Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "20251205234017_V1.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251205234017_V1.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251205234017_V1.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251205234017_V1.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251205234017_V1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T23:40:17.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "20251205231506_InitialCreate.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\20251205231506_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T23:15:06.546Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 186,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FlowerShopDbContextModelSnapshot.cs",
+              "DocumentMoniker": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\FlowerShopDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "FlowerShopAPI\\Migrations\\FlowerShopDbContextModelSnapshot.cs",
+              "ToolTip": "E:\\DTU\\Four year IT Department of Software 2026\\semester 1\\Mobile App 2\\FlowerShopAPI\\FlowerShopAPI\\Migrations\\FlowerShopDbContextModelSnapshot.cs",
+              "RelativeToolTip": "FlowerShopAPI\\Migrations\\FlowerShopDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T21:37:13.78Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 72,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
