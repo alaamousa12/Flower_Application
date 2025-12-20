@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:quiz_app/screens/auth/signin_screen.dart';
-import 'package:quiz_app/widgets/home_wrapper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../widgets/home_wrapper.dart'; // الملف المعدل
+import '../auth/signin_screen.dart';
 import '../onboarding/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -21,31 +21,43 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateNext() async {
-    // الانتظار 4 ثواني قبل الانتقال
-    await Future.delayed(const Duration(seconds: 8));
+    // الانتظار 4 ثواني (أو حسب رغبتك)
+    await Future.delayed(const Duration(seconds: 4));
 
     final prefs = await SharedPreferences.getInstance();
     final bool? seenOnboarding = prefs.getBool('onboarding');
     final bool? isLoggedIn = prefs.getBool('isLoggedIn');
 
+    // استرجاع حالة الأدمن المحفوظة
+    final bool isAdmin = prefs.getBool('isAdmin') ?? false;
+
     if (seenOnboarding == null || seenOnboarding == false) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const OnboardingScreen()),
-      );
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const OnboardingScreen()),
+        );
+      }
       return;
     }
 
     if (isLoggedIn == true) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const HomeWrapper()),
-      );
+      if (mounted) {
+        // تمرير حالة الأدمن المحفوظة للـ HomeWrapper
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => HomeWrapper(isAdmin: isAdmin),
+          ),
+        );
+      }
     } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const SigninScreen()),
-      );
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const SigninScreen()),
+        );
+      }
     }
   }
 

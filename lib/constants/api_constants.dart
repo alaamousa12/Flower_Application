@@ -1,20 +1,12 @@
 class ApiConstants {
-  // ده عنوان السيرفر (الـ IP السحري للمحاكي)
-  // لو شغال على موبايل حقيقي، غير الرقم ده لـ IP اللابتوب بتاعك
+  // استخدام 10.0.2.2 ضروري جداً للمحاكي لكي يرى السيرفر المحلي
+  // تأكد أن البورت 5104 هو نفس البورت اللي الباك إند شغال عليه
   static const String baseUrl = "http://10.0.2.2:5104/api";
 
-  // دي الروابط الفرعية لكل صفحة في التطبيق
-  // كأننا بنقوله: هات العنوان الرئيسي ولزق فيه اسم القسم
-
-  // رابط المنتجات
-  static const String products = "$baseUrl/Products";
-
-  // رابط تسجيل الدخول
   static const String login = "$baseUrl/Auth/login";
-
-  // رابط إنشاء حساب جديد
   static const String register = "$baseUrl/Auth/register";
-
-  // رابط الأوردرات
+  static const String products = "$baseUrl/Products";
+  static const String favorites = "$baseUrl/Favorites";
   static const String orders = "$baseUrl/Orders";
+  static const String notifications = "$baseUrl/Notifications";
 }

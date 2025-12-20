@@ -2,13 +2,23 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:quiz_app/widgets/custom_text_field.dart';
-import 'package:quiz_app/widgets/home_wrapper.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import '../../services/api_service.dart'; // تأكد من استدعاء السيرفر
 import 'create_account_step1.dart';
+import 'signin_screen.dart'; // لاستدعاء صفحة تسجيل الدخول بعد النجاح
 
 class CreateAccountStep2 extends StatefulWidget {
-  const CreateAccountStep2({super.key});
+  // 👇 استقبال البيانات
+  final String name;
+  final String email;
+  final String password;
+
+  const CreateAccountStep2({
+    super.key,
+    required this.name,
+    required this.email,
+    required this.password,
+  });
 
   @override
   State<CreateAccountStep2> createState() => _CreateAccountStep2State();
@@ -19,6 +29,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
   final addressController = TextEditingController();
   String? _selectedGender;
   File? _profileImage;
+  bool _isLoading = false; // 👇 حالة التحميل
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
@@ -31,6 +42,62 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
       setState(() {
         _profileImage = File(pickedFile.path);
       });
+    }
+  }
+
+  // 👇 دالة التسجيل
+  Future<void> _handleRegister() async {
+    if (phoneController.text.isEmpty ||
+        addressController.text.isEmpty ||
+        _selectedGender == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Please complete all fields")),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    final success = await ApiService().register(
+      name: widget.name,
+      email: widget.email,
+      password: widget.password,
+      phone: phoneController.text,
+      country: addressController.text,
+      gender: _selectedGender!,
+      imageFile: _profileImage,
+    );
+
+    setState(() => _isLoading = false);
+
+    if (success && mounted) {
+      // إظهار رسالة نجاح والذهاب لصفحة تسجيل الدخول
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Success"),
+          content: const Text("Account created successfully! Please Login."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (c) => const SigninScreen()),
+                      (route) => false,
+                );
+              },
+              child: const Text("Login Now"),
+            ),
+          ],
+        ),
+      );
+    } else if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text("Registration Failed. Try different email."),
+            backgroundColor: Colors.red),
+      );
     }
   }
 
@@ -53,9 +120,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                   roundedEdges: const Radius.circular(10),
                   size: 8,
                 ),
-
                 const SizedBox(height: 30),
-
                 Center(
                   child: Stack(
                     alignment: Alignment.bottomRight,
@@ -68,13 +133,12 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                             : null,
                         child: _profileImage == null
                             ? const Icon(
-                                Icons.person,
-                                size: 50,
-                                color: Colors.grey,
-                              )
+                          Icons.person,
+                          size: 50,
+                          color: Colors.grey,
+                        )
                             : null,
                       ),
-
                       Positioned(
                         bottom: 0,
                         right: 4,
@@ -97,9 +161,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 30),
-
                 Text(
                   "Phone Number",
                   style: TextStyle(
@@ -129,9 +191,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
-
                 Text(
                   "Gender",
                   style: TextStyle(
@@ -175,16 +235,12 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                   icon: const Icon(Icons.arrow_drop_down, color: Colors.pink),
                   isExpanded: true,
                 ),
-
                 const SizedBox(height: 15),
-
                 CustomTextField(
                   label: "Address",
                   controller: addressController,
                 ),
-
                 const SizedBox(height: 40),
-
                 Row(
                   children: [
                     Expanded(
@@ -216,16 +272,7 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                     const SizedBox(width: 15),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () async {
-                          final prefs = await SharedPreferences.getInstance();
-                          await prefs.setBool('isLoggedIn', true);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const HomeWrapper(),
-                            ),
-                          );
-                        },
+                        onPressed: _isLoading ? null : _handleRegister,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.pink,
                           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -233,9 +280,16 @@ class _CreateAccountStep2State extends State<CreateAccountStep2> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child: const Text(
+                        child: _isLoading
+                            ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                                color: Colors.white, strokeWidth: 2))
+                            : const Text(
                           "Finish",
-                          style: TextStyle(fontSize: 18, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 18, color: Colors.white),
                         ),
                       ),
                     ),

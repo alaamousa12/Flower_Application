@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:provider/provider.dart';
-import '../models/product_model.dart';
+import '../Models/product_model.dart';
 import '../Managers/favourite_manager.dart';
+import '../Managers/cart_manager.dart'; // استدعاء مدير السلة
 
 class ProductCard extends StatelessWidget {
   final ProductModel product;
@@ -12,7 +13,9 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // استدعاء المديرين
     final favoritesManager = Provider.of<FavoritesManager>(context);
+    final cartManager = Provider.of<CartManager>(context);
 
     return FadeInUp(
       duration: const Duration(milliseconds: 500),
@@ -25,187 +28,101 @@ class ProductCard extends StatelessWidget {
               color: Colors.black.withOpacity(0.07),
               blurRadius: 12,
               offset: const Offset(0, 4),
-            ),
+            )
           ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // صورة المنتج + زر القلب
             Stack(
               children: [
                 Hero(
-                  tag: product.image,
+                  tag: product.id.toString(),
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(22),
-                    ),
-                    child: Image.asset(
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
+                    child: Image.network(
                       product.image,
                       height: 170,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      errorBuilder: (c, e, s) => Container(
+                        height: 170,
+                        color: Colors.grey[200],
+                        child: const Icon(Icons.broken_image, color: Colors.grey),
+                      ),
                     ),
                   ),
                 ),
-
-                // Favorite Button
                 Positioned(
                   right: 10,
                   top: 10,
                   child: GestureDetector(
                     onTap: () {
+                      // 👇👇 تفعيل زر المفضلة 👇👇
                       favoritesManager.toggleFavorite(product);
                     },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      padding: const EdgeInsets.all(6),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.08),
-                            blurRadius: 6,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 16,
                       child: Icon(
-                        favoritesManager.isFavorite(product)
-                            ? IconlyBold.heart
-                            : IconlyLight.heart,
-                        color: favoritesManager.isFavorite(product)
-                            ? Colors.pink
-                            : Colors.grey,
-                        size: 22,
+                        favoritesManager.isFavorite(product) ? IconlyBold.heart : IconlyLight.heart,
+                        color: favoritesManager.isFavorite(product) ? Colors.pink : Colors.grey,
+                        size: 20,
                       ),
                     ),
                   ),
                 ),
-
-                // Discount Badge
-                if (product.discount)
-                  Positioned(
-                    left: 10,
-                    top: 10,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.redAccent,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Text(
-                        "DISCOUNT",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
               ],
             ),
 
+            // التفاصيل + زر الإضافة للسلة
             Padding(
               padding: const EdgeInsets.all(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Category & Rating
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        product.category,
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: Colors.grey.shade600,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star,
-                            color: Colors.amber.shade600,
-                            size: 15,
-                          ),
-                          const SizedBox(width: 3),
-                          Text(
-                            product.rating.toStringAsFixed(1),
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  Text(
+                    product.category,
+                    style: TextStyle(fontSize: 11, color: Colors.grey.shade600),
                   ),
-
-                  const SizedBox(height: 6),
-
-                  // Title
+                  const SizedBox(height: 4),
                   Text(
                     product.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                    ),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
-
-                  const SizedBox(height: 10),
-
-                  // Price & Buy Icon
+                  const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         "\$${product.price.toStringAsFixed(2)}",
-                        style: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
-                        ),
+                        style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.pink, fontSize: 16),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(7),
-                        decoration: const BoxDecoration(
-                          color: Colors.pink,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          IconlyBold.buy,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ],
-                  ),
 
-                  const SizedBox(height: 10),
-
-                  // Available now
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.local_shipping_rounded,
-                        size: 15,
-                        color: Colors.green,
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        "Available now",
-                        style: TextStyle(fontSize: 11, color: Colors.green),
-                      ),
+                      // 👇👇 تفعيل زر السلة (Buy/Add) 👇👇
+                      GestureDetector(
+                        onTap: () {
+                          cartManager.addToCart(product);
+                          // إظهار رسالة تأكيد صغيرة
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Added to Cart!"),
+                              duration: Duration(seconds: 1),
+                              backgroundColor: Colors.green,
+                            ),
+                          );
+                        },
+                        child: const CircleAvatar(
+                          radius: 14,
+                          backgroundColor: Colors.pink,
+                          child: Icon(IconlyBold.buy, color: Colors.white, size: 16),
+                        ),
+                      )
                     ],
-                  ),
+                  )
                 ],
               ),
             ),

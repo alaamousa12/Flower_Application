@@ -1,216 +1,209 @@
-
-
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:quiz_app/widgets/custom_text_field.dart';
-import 'package:quiz_app/widgets/primary_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/api_service.dart';
+import '../../widgets/custom_text_field.dart';
 
 class UserProfileScreen extends StatefulWidget {
   final bool fromBottomNav;
-  final PageController? controller;
-  const UserProfileScreen({
-    super.key,
-    this.fromBottomNav = false,
-    this.controller,
-  });
+  const UserProfileScreen({super.key, required this.fromBottomNav});
 
   @override
   State<UserProfileScreen> createState() => _UserProfileScreenState();
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  // Controllers
   final nameController = TextEditingController();
   final addressController = TextEditingController();
   final phoneController = TextEditingController();
-  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
-  String selectedGender = "Male";
-  File? profileImage;
-
-  final ImagePicker picker = ImagePicker();
+  String? _selectedGender;
+  String? _profileImageUrl; // رابط الصورة من السيرفر
+  File? _newImageFile;      // صورة جديدة من الموبايل
+  int? _userId;
+  bool _isLoading = false;
 
   @override
-  void dispose() {
-    nameController.dispose();
-    addressController.dispose();
-    phoneController.dispose();
-    emailController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    _loadUserData();
   }
 
-  void onUpdateProfile() {
-    debugPrint("Profile Updated!");
+  // تحميل البيانات المحفوظة وعرضها
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _userId = prefs.getInt('userId');
+      nameController.text = prefs.getString('userName') ?? "";
+      addressController.text = prefs.getString('userCountry') ?? "";
+      phoneController.text = prefs.getString('userPhone') ?? "";
+      _selectedGender = prefs.getString('userGender');
+      _profileImageUrl = prefs.getString('userImage'); // تحميل الرابط القديم
+    });
   }
 
-  Future<void> pickImage() async {
-    final XFile? result = await picker.pickImage(source: ImageSource.gallery);
-
-    if (result != null) {
+  // اختيار صورة جديدة
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
       setState(() {
-        profileImage = File(result.path);
+        _newImageFile = File(pickedFile.path); // حفظ الصورة الجديدة
       });
     }
   }
 
+  // حفظ التعديلات
+  Future<void> _updateProfile() async {
+    if (_userId == null) return;
+    setState(() => _isLoading = true);
+
+    final updatedUser = await ApiService().updateProfile(
+      userId: _userId!,
+      name: nameController.text,
+      phone: phoneController.text,
+      gender: _selectedGender ?? "Male",
+      country: addressController.text,
+      password: passwordController.text.isNotEmpty ? passwordController.text : null,
+      imageFile: _newImageFile, // إرسال الصورة الجديدة لو وجدت
+    );
+
+    if (updatedUser != null) {
+      // تحديث البيانات في الذاكرة (SharedPreferences)
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('userName', updatedUser.name);
+      await prefs.setString('userPhone', updatedUser.phoneNumber);
+      await prefs.setString('userCountry', updatedUser.country);
+      await prefs.setString('userGender', updatedUser.gender);
+      if (updatedUser.profileImage != null) {
+        await prefs.setString('userImage', updatedUser.profileImage!);
+      }
+
+      // تحديث الشاشة
+      setState(() {
+        _profileImageUrl = updatedUser.profileImage;
+        _newImageFile = null; // تفريغ الملف المؤقت لأننا حفظناه خلاص
+      });
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Profile Updated Successfully!"), backgroundColor: Colors.green),
+        );
+      }
+    } else {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Failed to update profile"), backgroundColor: Colors.red),
+        );
+      }
+    }
+    setState(() => _isLoading = false);
+  }
+
   @override
   Widget build(BuildContext context) {
+    // تحديد الصورة التي ستعرض
+    ImageProvider? imageProvider;
+    if (_newImageFile != null) {
+      imageProvider = FileImage(_newImageFile!); // 1. الأولوية للصورة الجديدة
+    } else if (_profileImageUrl != null && _profileImageUrl!.isNotEmpty) {
+      if (_profileImageUrl!.startsWith('http')) {
+        imageProvider = NetworkImage(_profileImageUrl!); // 2. ثم صورة السيرفر
+      } else {
+        imageProvider = FileImage(File(_profileImageUrl!)); // 3. ثم الملف المحلي القديم
+      }
+    }
+
     return Scaffold(
-      backgroundColor: const Color(0xFFF3F4F6),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            // فقط نرجع للصفحة السابقة
-            Navigator.pop(context);
-          },
-        ),
-        title: const Text(
-          'Your Profile',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
-
+      appBar: widget.fromBottomNav ? null : AppBar(title: const Text("Your Profile"), centerTitle: true),
       body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 10,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              // صورة البروفايل
+              GestureDetector(
+                onTap: _pickImage,
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundColor: Colors.pink.shade50,
+                      backgroundImage: imageProvider,
+                      child: imageProvider == null
+                          ? const Icon(Icons.person, size: 50, color: Colors.pink)
+                          : null,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text("edit image ✏️", style: TextStyle(color: Colors.grey)),
+                  ],
                 ),
+              ),
+              const SizedBox(height: 30),
+
+              // الحقول
+              CustomTextField(label: "Name", controller: nameController),
+              const SizedBox(height: 15),
+              CustomTextField(label: "Address (Country)", controller: addressController),
+              const SizedBox(height: 15),
+              CustomTextField(label: "Phone Number", controller: phoneController),
+
+              const SizedBox(height: 15),
+              // حقل تغيير الباسورد (اختياري)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 10),
-
-                  /// -----------------------------
-                  /// Profile Image + Upload
-                  Center(
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 60,
-                          backgroundColor: const Color(0xFFE6E0F8),
-                          backgroundImage: profileImage != null
-                              ? FileImage(profileImage!)
-                              : null,
-                          child: profileImage == null
-                              ? const Icon(
-                                  Icons.person_outline,
-                                  size: 80,
-                                  color: Color(0xFF7B66FF),
-                                )
-                              : null,
-                        ),
-                        const SizedBox(height: 10),
-                        GestureDetector(
-                          onTap: pickImage,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
-                                'Edit Image',
-                                style: TextStyle(
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              SizedBox(width: 5),
-                              Icon(Icons.edit, size: 18, color: Colors.black54),
-                            ],
-                          ),
-                        ),
-                      ],
+                  const Text("Change Password (Optional)", style: TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 5),
+                  TextField(
+                    controller: passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      hintText: "New Password",
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
                     ),
                   ),
-
-                  const SizedBox(height: 40),
-
-                  /// -----------------------------
-                  /// FORM FIELDS
-                  CustomTextField(label: 'Name', controller: nameController),
-                  const SizedBox(height: 20),
-
-                  CustomTextField(
-                    label: 'Address',
-                    controller: addressController,
-                  ),
-                  const SizedBox(height: 20),
-
-                  CustomTextField(
-                    label: 'Phone Number',
-                    controller: phoneController,
-                    keyboardType: TextInputType.phone,
-                  ),
-                  const SizedBox(height: 20),
-
-                  /// -----------------------------
-                  /// GENDER DROPDOWN
-                  Text(
-                    "Gender",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade800,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey.shade400),
-                    ),
-                    child: DropdownButton<String>(
-                      value: selectedGender,
-                      isExpanded: true,
-                      underline: const SizedBox(),
-                      items: const [
-                        DropdownMenuItem(value: "Male", child: Text("Male")),
-                        DropdownMenuItem(
-                          value: "Female",
-                          child: Text("Female"),
-                        ),
-                        DropdownMenuItem(value: "Other", child: Text("Other")),
-                      ],
-                      onChanged: (value) {
-                        setState(() {
-                          selectedGender = value!;
-                        });
-                      },
-                    ),
-                  ),
-
-                  const SizedBox(height: 20),
-
-                  CustomTextField(
-                    label: 'Email',
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                  ),
-
-                  const SizedBox(height: 20),
                 ],
               ),
-            ),
 
-            /// -----------------------------
-            /// UPDATE BUTTON
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                bottom: 15,
-                top: 10,
+              const SizedBox(height: 15),
+              // القائمة المنسدلة للنوع
+              DropdownButtonFormField<String>(
+                value: _selectedGender,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: BorderSide.none),
+                ),
+                hint: const Text("Gender"),
+                items: ["Male", "Female"].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
+                onChanged: (val) => setState(() => _selectedGender = val),
               ),
-              child: PrimaryButton(text: 'UPDATE', onPressed: onUpdateProfile),
-            ),
-          ],
+
+              const SizedBox(height: 30),
+
+              // زر التحديث
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _isLoading ? null : _updateProfile,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  ),
+                  child: _isLoading
+                      ? const CircularProgressIndicator(color: Colors.white)
+                      : const Text("UPDATE", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

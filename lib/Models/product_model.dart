@@ -1,59 +1,75 @@
-<<<<<<< HEAD
-class Product {
+class ProductModel {
   final int id;
-  final String name;
+  final String title;
   final double price;
-  final String imageUrl;
+  final String image;
   final String description;
+  final String category;
+  final double rating;
 
-  Product({
+  // ✅ Special Offer fields (من الباك اند)
+  final bool isSpecialOffer;
+  final double discountPercent;
+
+  ProductModel({
     required this.id,
-    required this.name,
+    required this.title,
     required this.price,
-    required this.imageUrl,
+    required this.image,
     required this.description,
+    required this.category,
+    this.rating = 4.5,
+
+    // ✅ defaults
+    this.isSpecialOffer = false,
+    this.discountPercent = 0,
   });
 
-  // دالة بتحول الـ JSON اللي جاي من السيرفر لـ منتج فلاتر يفهمه
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      // ركز هنا: الأسماء دي لازم تكون زي اللي بتظهرلك في Swagger بالظبط
-      id: json['productId'] ?? 0,
-      name: json['name'] ?? 'No Name',
-      // السطر ده عشان لو السعر جه رقم صحيح يحوله لعشري من غير مشاكل
-      price: (json['price'] ?? 0).toDouble(),
-      imageUrl: json['mainImageUrl'] ?? '',
-      description: json['description'] ?? '',
+  // -------------------- helpers --------------------
+  static int _toInt(dynamic v) {
+    if (v == null) return 0;
+    if (v is int) return v;
+    return int.tryParse(v.toString()) ?? 0;
+  }
+
+  static double _toDouble(dynamic v) {
+    if (v == null) return 0;
+    if (v is double) return v;
+    if (v is int) return v.toDouble();
+    return double.tryParse(v.toString()) ?? 0;
+  }
+
+  static bool _toBool(dynamic v) {
+    if (v == null) return false;
+    if (v is bool) return v;
+    if (v is int) return v == 1;
+    final s = v.toString().toLowerCase().trim();
+    return s == "true" || s == "1" || s == "yes";
+  }
+
+  // ✅ السعر بعد الخصم
+  double get discountedPrice {
+    if (!isSpecialOffer || discountPercent <= 0) return price;
+    return price * (1 - (discountPercent / 100));
+  }
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    final rawImage = (json['mainImageUrl'] ?? '').toString();
+
+    return ProductModel(
+      id: _toInt(json['productId'] ?? json['ProductId']),
+      title: (json['name'] ?? json['Name'] ?? 'No Name').toString(),
+      price: _toDouble(json['price'] ?? json['Price']),
+      image: rawImage.replaceAll('localhost', '10.0.2.2'),
+      description: (json['description'] ?? json['Description'] ?? '').toString(),
+      category: (json['category'] != null && json['category'] is Map)
+          ? (json['category']['name'] ?? 'General').toString()
+          : (json['categoryName'] ?? json['CategoryName'] ?? 'General').toString(),
+      rating: 4.5,
+
+      // ✅ Special Offer mapping (لو موجود في الباك اند)
+      isSpecialOffer: _toBool(json['isSpecialOffer'] ?? json['IsSpecialOffer']),
+      discountPercent: _toDouble(json['discountPercent'] ?? json['DiscountPercent']),
     );
   }
 }
-=======
-class ProductModel {
-  final String image;
-  final String title;
-  final double price;
-  final String category;
-  final double rating;
-  final bool discount;
-
-  ProductModel({
-    required this.image,
-    required this.title,
-    required this.price,
-    required this.category,
-    required this.rating,
-    this.discount = false,
-  });
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-          other is ProductModel &&
-              runtimeType == other.runtimeType &&
-              image == other.image &&
-              title == other.title;
-
-  @override
-  int get hashCode => image.hashCode ^ title.hashCode;
-}
->>>>>>> f3e54aa79b43e943732c71c9fba599bf6fb19efb

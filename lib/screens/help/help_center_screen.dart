@@ -11,7 +11,6 @@ class HelpCenterScreen extends StatefulWidget {
 class _HelpCenterScreenState extends State<HelpCenterScreen>
     with SingleTickerProviderStateMixin {
   late TabController tabController;
-
   @override
   void initState() {
     super.initState();

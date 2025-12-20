@@ -1,138 +1,165 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/Models/product_model.dart';
+import 'package:quiz_app/screens/products/product_detail_screen.dart';
+
+// ✅ NEW
+import 'package:provider/provider.dart';
+import 'package:quiz_app/Managers/cart_manager.dart';
+import 'package:quiz_app/screens/cart/cart_page.dart';
 
 class SpecialOffersPage extends StatelessWidget {
-  const SpecialOffersPage({super.key});
+  final List<ProductModel> offers;
+
+  const SpecialOffersPage({super.key, required this.offers});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
       appBar: AppBar(
-        elevation: 0,
+        title: const Text("Special Offers", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text(
-          "Special for You",
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
       ),
-
-      body: ListView.builder(
+      body: offers.isEmpty
+          ? const Center(child: Text("No special offers right now"))
+          : GridView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: 4,
-        itemBuilder: (context, index) {
-          return _buildOfferCard();
-        },
-      ),
-    );
-  }
+        itemCount: offers.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 14,
+          crossAxisSpacing: 14,
+          childAspectRatio: 0.78,
+        ),
+        itemBuilder: (_, i) {
+          final p = offers[i];
 
-  Widget _buildOfferCard() {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 12,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-
-      child: Row(
-        children: [
-          // ---------------------------
-          // Left Section (Texts + Button)
-          // ---------------------------
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              mainAxisSize: MainAxisSize.min,
-
-              children: [
-                const Column(
+          return InkWell(
+            borderRadius: BorderRadius.circular(16),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProductDetailsScreen(
+                    image: p.image,
+                    title: p.title,
+                    price: p.price,
+                  ),
+                ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.06),
+                    blurRadius: 10,
+                  ),
+                ],
+                color: Colors.white,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Today's Offers",
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            child: Hero(
+                              tag: p.image,
+                              child: Image.network(
+                                p.image,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                                errorBuilder: (_, __, ___) => Container(
+                                  color: Colors.grey.shade200,
+                                  child: const Center(
+                                    child: Icon(Icons.image_not_supported, size: 40),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // ✅ Cart icon button (Add to cart + Go to cart)
+                          Positioned(
+                            top: 10,
+                            right: 10,
+                            child: InkWell(
+                              onTap: () {
+                                final cartManager = context.read<CartManager>();
+                                cartManager.addToCart(p);
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (_) => const CartPage()),
+                                );
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("${p.title} added to cart ✅"),
+                                    duration: const Duration(seconds: 1),
+                                  ),
+                                );
+                              },
+                              borderRadius: BorderRadius.circular(999),
+                              child: Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.9),
+                                  shape: BoxShape.circle,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.12),
+                                      blurRadius: 8,
+                                      offset: const Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: const Icon(
+                                  Icons.shopping_cart_outlined,
+                                  size: 20,
+                                  color: Colors.pink,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-
-                    SizedBox(height: 4),
-
-                    Text(
-                      "Get Special Offer",
-                      style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 4),
-
-                    Text(
-                      "Up to 20%",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.pink,
+                    Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            p.title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 6),
+                          Text(
+                            "\$${p.price.toStringAsFixed(2)}",
+                            style: const TextStyle(
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
                 ),
-
-                // ---- Order Now Button ----
-                SizedBox(
-                  width: 130,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                      padding: EdgeInsets.zero,
-                    ),
-                    child: const Text(
-                      "Order Now",
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-
-          const SizedBox(width: 12),
-
-          // ---------------------------
-          // Right Image Placeholder
-          // ---------------------------
-          ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: Container(
-              width: 115,
-              height: 120, // ← الحل الحقيقي لوقف الـ overflow
-              color: Colors.grey.shade300,
-              child: const Icon(Icons.image, size: 40, color: Colors.white70),
-            ),
-          ),
-        ],
+          );
+        },
       ),
     );
   }
