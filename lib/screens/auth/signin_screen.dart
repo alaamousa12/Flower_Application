@@ -48,13 +48,12 @@ class _SigninScreenState extends State<SigninScreen> {
       await prefs.setString('userImage', user.profileImage ?? "");
 
       if (mounted) {
-        // 👇👇 التحقق من صلاحية الأدمن 👇👇
         bool isUserAdmin = user.email.toLowerCase() == "admin@flower.com";
 
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-            // نمرر القيمة هنا
+            
             builder: (context) => MainNavigation(isAdmin: isUserAdmin),
           ),
               (route) => false,
