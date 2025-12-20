@@ -1,176 +1,113 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:iconly/iconly.dart';
 
-class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+import '../services/api_service.dart';
+import '../screens/notifications/notification_page.dart'; // عدّل المسار لو مختلف
+
+class CustomHomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   const CustomHomeAppBar({super.key});
 
   @override
-  Size get preferredSize => const Size.fromHeight(65);
+  State<CustomHomeAppBar> createState() => _CustomHomeAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomHomeAppBarState extends State<CustomHomeAppBar> {
+  int _unreadCount = 0;
+  bool _loadingCount = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshUnreadCount();
+  }
+
+  Future<void> _refreshUnreadCount() async {
+    setState(() => _loadingCount = true);
+    final count = await ApiService().getUnreadNotificationCount();
+    if (!mounted) return;
+    setState(() {
+      _unreadCount = count;
+      _loadingCount = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 4,
       backgroundColor: Colors.white,
-      automaticallyImplyLeading: false,
-      shadowColor: Colors.black.withOpacity(0.05),
-      titleSpacing: 0,
+      elevation: 0,
+      centerTitle: true,
 
-      title: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Builder(
-          builder: (context) => Row(
+      leading: Builder(
+        builder: (ctx) => IconButton(
+          icon: const Icon(IconlyLight.category, color: Colors.black),
+          onPressed: () => Scaffold.of(ctx).openDrawer(),
+        ),
+      ),
+
+      title: Text(
+        "Flower Shop",
+        style: TextStyle(
+          color: Colors.grey.shade900,
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+        ),
+      ),
+
+      actions: [
+        IconButton(
+          onPressed: () async {
+            final changed = await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const NotificationPage()),
+            );
+
+            // ✅ لو حصل تغيير أو حتى لا، نحدّث العداد
+            if (changed == true) {
+              await _refreshUnreadCount();
+            } else {
+              await _refreshUnreadCount();
+            }
+          },
+          icon: Stack(
+            clipBehavior: Clip.none,
             children: [
-              _iconBox(
-                icon: Icons.menu,
-                onTap: () {
-                  ZoomDrawer.of(context)?.toggle();
-                },
-              ),
+              const Icon(IconlyLight.notification, color: Colors.black),
 
-              const SizedBox(width: 14),
-
-              const Expanded(
-                child: Center(
-                  child: Text(
-                    "Flower Shop",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black87,
+              if (!_loadingCount && _unreadCount > 0)
+                Positioned(
+                  right: -2,
+                  top: -2,
+                  child: Container(
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    constraints:
+                    const BoxConstraints(minWidth: 18, minHeight: 18),
+                    child: Center(
+                      child: Text(
+                        _unreadCount > 99 ? "99+" : _unreadCount.toString(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-
-              _iconBox(icon: Icons.notifications_none_rounded, onTap: () {}),
-              const SizedBox(width: 10),
-              _iconBox(icon: Icons.shopping_bag_outlined, onTap: () {}),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _iconBox({required IconData icon, required VoidCallback onTap}) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Colors.pink.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Icon(icon, size: 22, color: Colors.pink),
-      ),
+        const SizedBox(width: 6),
+      ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-// import 'package:quiz_app/screens/notifications/notification_page.dart';
-// import '../../screens/orders/my_orders_screen.dart';
-
-// class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
-//   const CustomHomeAppBar({super.key});
-
-//   @override
-//   Size get preferredSize => const Size.fromHeight(65);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return AppBar(
-//       elevation: 4,
-//       backgroundColor: Colors.white,
-//       automaticallyImplyLeading: false,
-//       shadowColor: Colors.black.withOpacity(0.05),
-//       titleSpacing: 0,
-
-//       title: Padding(
-//         padding: const EdgeInsets.symmetric(horizontal: 16),
-//         child: Builder(
-//           builder: (context) => Row(
-//             children: [
-//               _iconBox(
-//                 icon: Icons.menu,
-//                 onTap: () {
-//                   ZoomDrawer.of(context)?.toggle();
-//                 },
-//               ),
-
-//               const SizedBox(width: 14),
-
-//               const Expanded(
-//                 child: Center(
-//                   child: Text(
-//                     "Flower Shop",
-//                     style: TextStyle(
-//                       fontSize: 20,
-//                       fontWeight: FontWeight.w600,
-//                       color: Colors.black87,
-//                     ),
-//                   ),
-//                 ),
-//               ),
-
-//               // -------------------------
-//               // NOTIFICATION BUTTON
-//               // -------------------------
-//               _iconBox(
-//                 icon: Icons.notifications_none_rounded,
-//                 onTap: () {
-//                   Navigator.push(
-//                     context,
-//                     MaterialPageRoute(builder: (_) => const NotificationPage()),
-//                   );
-//                 },
-//               ),
-
-//               const SizedBox(width: 10),
-
-//               // -------------------------
-//               // MY ORDERS BUTTON
-//               // -------------------------
-//               _iconBox(
-//                 icon: Icons.shopping_bag_outlined,
-//                 onTap: () {
-//                   Navigator.push(
-//                     context,
-//                     MaterialPageRoute(builder: (_) => const MyOrdersScreen()),
-//                   );
-//                 },
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget _iconBox({required IconData icon, required VoidCallback onTap}) {
-//     return InkWell(
-//       onTap: onTap,
-//       borderRadius: BorderRadius.circular(12),
-//       child: Container(
-//         padding: const EdgeInsets.all(8),
-//         decoration: BoxDecoration(
-//           color: Colors.pink.withOpacity(0.1),
-//           borderRadius: BorderRadius.circular(12),
-//         ),
-//         child: Icon(icon, size: 22, color: Colors.pink),
-//       ),
-//     );
-//   }
-// }

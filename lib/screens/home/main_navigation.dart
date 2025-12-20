@@ -1,127 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:quiz_app/screens/cart/cart_page.dart';
-// import 'package:quiz_app/screens/cart/cart_screen.dart';
-import 'package:quiz_app/screens/orders/my_orders_screen.dart';
-import 'package:quiz_app/screens/profile/profile_screen.dart';
-import '../home/home_screen.dart';
+import '../cart/cart_page.dart';
+import '../orders/my_orders_screen.dart';
+import '../profile/profile_screen.dart';
+import 'home_screen.dart';
 import '../favorites/favorites_screen.dart';
+import '../admin/add_product_screen.dart';
 
 class MainNavigation extends StatefulWidget {
-  const MainNavigation({super.key});
+  final bool isAdmin;
+  const MainNavigation({super.key, this.isAdmin = false});
 
   @override
-  State<MainNavigation> createState() => _MainNavigationState();
+  State<MainNavigation> createState() => MainNavigationState();
 }
 
-class _MainNavigationState extends State<MainNavigation> {
-  int _currentIndex = 0;
-
+class MainNavigationState extends State<MainNavigation> {
+  int currentIndex = 0;
   final PageController _pageController = PageController();
-
-  late final List<Widget> _pages;
-
-  @override
-  void initState() {
-    super.initState();
-    _pages = [const HomeScreen(), const FavoritesScreen(), const CartPage()];
-  }
 
   @override
   Widget build(BuildContext context) {
+    // 1. تعريف القوائم داخل build لضمان التحديث
+    List<Widget> pages = [
+      const HomeScreen(),
+      const FavoritesScreen(),
+      const CartPage(),
+      const MyOrdersScreen(),
+      const UserProfileScreen(fromBottomNav: true),
+    ];
+
+    List<BottomNavigationBarItem> navItems = [
+      const BottomNavigationBarItem(icon: Icon(IconlyLight.home), activeIcon: Icon(IconlyBold.home), label: "Home"),
+      const BottomNavigationBarItem(icon: Icon(IconlyLight.heart), activeIcon: Icon(IconlyBold.heart), label: "Favorites"),
+      const BottomNavigationBarItem(icon: Icon(IconlyLight.buy), activeIcon: Icon(IconlyBold.buy), label: "Cart"),
+      const BottomNavigationBarItem(icon: Icon(IconlyLight.bag_2), activeIcon: Icon(IconlyBold.bag_2), label: "Orders"),
+      const BottomNavigationBarItem(icon: Icon(IconlyLight.profile), activeIcon: Icon(IconlyBold.profile), label: "Profile"),
+    ];
+
+    // 2. إذا كان أدمن، نضيف الصفحة والزر
+    if (widget.isAdmin) {
+      pages.insert(2, const AddProductScreen());
+      navItems.insert(2, const BottomNavigationBarItem(
+        icon: Icon(Icons.add_circle_outline, size: 32, color: Colors.pink),
+        activeIcon: Icon(Icons.add_circle, size: 32, color: Colors.pink),
+        label: "Add",
+      ));
+    }
+
     return Scaffold(
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: _pages,
+        children: pages, // نستخدم القائمة المحلية
       ),
-
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(vertical: 8),
         decoration: BoxDecoration(
-          color: Colors.white,
           boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.06),
-              blurRadius: 12,
-              offset: const Offset(0, -2),
-            ),
+            BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, -5))
           ],
         ),
         child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) async {
-            if (index == 4) {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const UserProfileScreen(fromBottomNav: true),
-                ),
-              );
-
-              if (!mounted) return;
-              setState(() {
-                _currentIndex = 0;
-                _pageController.jumpToPage(0);
-              });
-              return;
-            }
-
-            if (index == 3) {
-              await Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const MyOrdersScreen()),
-              );
-
-              if (!mounted) return;
-              setState(() {
-                _currentIndex = 0;
-                _pageController.jumpToPage(0);
-              });
-              return;
-            }
-
+          currentIndex: currentIndex,
+          onTap: (index) {
             setState(() {
-              _currentIndex = index;
+              currentIndex = index;
               _pageController.jumpToPage(index);
             });
           },
-
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          elevation: 0,
           selectedItemColor: Colors.pink,
-          unselectedItemColor: Colors.grey.shade500,
+          unselectedItemColor: Colors.grey.shade400,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.home),
-              activeIcon: Icon(IconlyBold.home),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.heart),
-              activeIcon: Icon(IconlyBold.heart),
-              label: "Favorites",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.buy),
-              activeIcon: Icon(IconlyBold.buy),
-              label: "Cart",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.bag_2),
-              activeIcon: Icon(IconlyBold.bag_2),
-              label: "Orders",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(IconlyLight.profile),
-              activeIcon: Icon(IconlyBold.profile),
-              label: "Profile",
-            ),
-          ],
+          items: navItems, // نستخدم القائمة المحلية
         ),
       ),
     );

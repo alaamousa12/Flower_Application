@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-import 'package:quiz_app/screens/Payment/payment_method.dart';
-import 'package:quiz_app/widgets/custom_text_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/api_service.dart';
+import '../../widgets/custom_text_field.dart';
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({super.key});
@@ -11,15 +11,18 @@ class AddCardScreen extends StatefulWidget {
 }
 
 class _AddCardScreenState extends State<AddCardScreen> {
+  // Controllers
   final TextEditingController holderController = TextEditingController();
   final TextEditingController numberController = TextEditingController();
   final TextEditingController expiryController = TextEditingController();
   final TextEditingController cvvController = TextEditingController();
 
   bool saveCard = true;
+  bool isSaving = false; // متغير للتحميل
 
   @override
   Widget build(BuildContext context) {
+    // استخدمت نفس ألوانك وتصميمك
     const Color primaryColor = Color(0xFF673AB7);
     const SizedBox spacer = SizedBox(height: 16);
 
@@ -62,7 +65,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
               children: [
                 Expanded(
                   child: CustomTextField(
-                    label: 'Expiry Date',
+                    label: 'Expiry Date (MM/YY)',
                     controller: expiryController,
                     keyboardType: TextInputType.datetime,
                   ),
@@ -104,18 +107,50 @@ class _AddCardScreenState extends State<AddCardScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PaymentMethodsScreen(),
-                    ),
-                  );
+                // 👇👇 المنطق الجديد للحفظ 👇👇
+                onPressed: isSaving ? null : () async {
+                  // 1. التحقق من الحقول
+                  if (holderController.text.isEmpty ||
+                      numberController.text.isEmpty ||
+                      expiryController.text.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text("Please fill all fields")),
+                    );
+                    return;
+                  }
 
-                  // print('Holder: ${holderController.text}');
-                  // print('Number: ${numberController.text}');
-                  // print('Expiry: ${expiryController.text}');
-                  // print('CVV: ${cvvController.text}');
+                  setState(() => isSaving = true);
+
+                  // 2. جلب معرف المستخدم
+                  final prefs = await SharedPreferences.getInstance();
+                  final userId = prefs.getInt('userId');
+
+                  if (userId != null) {
+                    // 3. الاتصال بالسيرفر
+                    final success = await ApiService().addPaymentCard(
+                      userId: userId,
+                      name: holderController.text,
+                      cardNumber: numberController.text,
+                      expiryDate: expiryController.text,
+                    );
+
+                    if (success) {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Card Saved Successfully"), backgroundColor: Colors.green),
+                        );
+                        // 4. الرجوع للصفحة السابقة مع إرسال true لتحديث القائمة
+                        Navigator.pop(context, true);
+                      }
+                    } else {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Failed to save card"), backgroundColor: Colors.red),
+                        );
+                      }
+                    }
+                  }
+                  if (mounted) setState(() => isSaving = false);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
@@ -124,7 +159,13 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
+                child: isSaving
+                    ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2)
+                )
+                    : const Text(
                   'Add Card',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
@@ -136,6 +177,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
     );
   }
 
+  // الـ Widget الخاصة بتصميم الكارت (كما هي)
   Widget _buildCreditCard(Color color) {
     return Container(
       padding: const EdgeInsets.all(20),
@@ -179,7 +221,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Align(
+              const Align(
                 alignment: Alignment.topRight,
                 child: Text(
                   'VISA',
@@ -192,11 +234,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 ),
               ),
               const SizedBox(height: 30),
-              const Text(
-                '4716 9627 1635 8047',
-                style: TextStyle(
+              Text(
+                // عرض الرقم المدخل أو رقم افتراضي
+                numberController.text.isNotEmpty ? numberController.text : '**** **** **** ****',
+                style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 22,
                   letterSpacing: 1.5,
                   fontWeight: FontWeight.w600,
                 ),
@@ -207,27 +250,27 @@ class _AddCardScreenState extends State<AddCardScreen> {
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text(
+                    children: <Widget>[
+                      const Text(
                         'Card holder name',
                         style: TextStyle(color: Colors.white70, fontSize: 10),
                       ),
                       Text(
-                        'Esther Howard',
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        holderController.text.isNotEmpty ? holderController.text : 'YOUR NAME',
+                        style: const TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const <Widget>[
-                      Text(
+                    children: <Widget>[
+                      const Text(
                         'Expiry date',
                         style: TextStyle(color: Colors.white70, fontSize: 10),
                       ),
                       Text(
-                        '02/30',
-                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        expiryController.text.isNotEmpty ? expiryController.text : 'MM/YY',
+                        style: const TextStyle(color: Colors.white, fontSize: 14),
                       ),
                     ],
                   ),

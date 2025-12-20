@@ -1,4 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:quiz_app/screens/auth/signin_screen.dart';
+
 import 'package:quiz_app/screens/Payment/payment_method.dart';
 import 'package:quiz_app/screens/cart/deliveryaddress.dart';
 import 'package:quiz_app/screens/favorites/favorites_screen.dart';
@@ -7,8 +11,52 @@ import 'package:quiz_app/screens/orders/my_orders_screen.dart';
 import 'package:quiz_app/screens/profile/profile_screen.dart';
 import 'package:quiz_app/screens/setting/setting_screen.dart';
 
-class AppDrawer extends StatelessWidget {
+// ✅ NEW: Admin Orders Screen
+import 'package:quiz_app/screens/admin/admin_orders_screen.dart';
+
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
+
+  @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  String userName = "Loading...";
+  String userEmail = "Loading...";
+  String? userImage;
+
+  bool isAdmin = false; // ✅ NEW
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('userName') ?? "User Name";
+      userEmail = prefs.getString('userEmail') ?? "user@gmail.com";
+      userImage = prefs.getString('userImage');
+
+      // ✅ Admin condition (temporary)
+      isAdmin = (userEmail.toLowerCase().trim() == "admin@test.com");
+    });
+  }
+
+  Future<void> _logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    if (mounted) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (c) => const SigninScreen()),
+            (route) => false,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +72,7 @@ class AppDrawer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // HEADER SECTION - محسن
+            // HEADER SECTION
             Container(
               width: double.infinity,
               padding: const EdgeInsets.only(
@@ -47,7 +95,6 @@ class AppDrawer extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Avatar مع ظل
                   Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -60,40 +107,37 @@ class AppDrawer extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: const CircleAvatar(
+                    child: CircleAvatar(
                       radius: 40,
                       backgroundColor: Colors.white,
-                      child: Icon(Icons.person, size: 36, color: Colors.pink),
+                      backgroundImage: (userImage != null && userImage!.isNotEmpty)
+                          ? (userImage!.startsWith('http')
+                          ? NetworkImage(userImage!) as ImageProvider
+                          : FileImage(File(userImage!)))
+                          : null,
+                      child: (userImage == null || userImage!.isEmpty)
+                          ? const Icon(Icons.person, size: 36, color: Colors.pink)
+                          : null,
                     ),
                   ),
-
                   const SizedBox(height: 16),
-
-                  // User Info
-                  const Text(
-                    "User Name",
-                    style: TextStyle(
+                  Text(
+                    userName,
+                    style: const TextStyle(
                       fontSize: 22,
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
                       letterSpacing: 0.5,
                     ),
                   ),
-
                   const SizedBox(height: 4),
-
-                  // Email
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(
-                        Icons.email_outlined,
-                        size: 14,
-                        color: Colors.white70,
-                      ),
+                      const Icon(Icons.email_outlined, size: 14, color: Colors.white70),
                       const SizedBox(width: 6),
                       Text(
-                        "user@gmail.com",
+                        userEmail,
                         style: TextStyle(
                           color: Colors.white.withOpacity(0.9),
                           fontSize: 14,
@@ -105,10 +149,8 @@ class AppDrawer extends StatelessWidget {
                 ],
               ),
             ),
-
             const SizedBox(height: 4),
 
-            // MENU ITEMS
             Expanded(
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
@@ -116,7 +158,6 @@ class AppDrawer extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   child: Column(
                     children: [
-                      // Menu Items مع تعديلات بسيطة
                       _menuItem(
                         icon: Icons.person_outline,
                         text: "Profile",
@@ -124,8 +165,7 @@ class AppDrawer extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  const UserProfileScreen(fromBottomNav: false),
+                              builder: (context) => const UserProfileScreen(fromBottomNav: false),
                             ),
                           );
                         },
@@ -136,209 +176,142 @@ class AppDrawer extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => DeliveryAddressScreen(),
-                            ),
+                            MaterialPageRoute(builder: (context) => DeliveryAddressScreen()),
                           );
                         },
                       ),
                       _menuItem(
                         icon: Icons.favorite_outline,
                         text: "My Favorites",
-
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => FavoritesScreen(),
-                            ),
+                            MaterialPageRoute(builder: (context) => FavoritesScreen()),
                           );
                         },
                       ),
                       _menuItem(
                         icon: Icons.shopping_bag_outlined,
                         text: "My Orders",
-
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => MyOrdersScreen(),
-                            ),
+                            MaterialPageRoute(builder: (context) => const MyOrdersScreen()),
                           );
                         },
                       ),
                       _menuItem(
                         icon: Icons.notifications_outlined,
                         text: "Notifications",
-
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => NotificationPage(),
-                            ),
+                            MaterialPageRoute(builder: (context) => const NotificationPage()),
                           );
                         },
                       ),
 
-                      // Divider
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 8,
+                      // ✅ Admin section
+                      if (isAdmin) ...[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                          child: Divider(height: 1, thickness: 0.8, color: Colors.grey.shade300),
                         ),
-                        child: Divider(
-                          height: 1,
-                          thickness: 0.8,
-                          color: Colors.grey.shade300,
+                        _menuItem(
+                          icon: Icons.admin_panel_settings_outlined,
+                          text: "Admin Orders",
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (_) => const AdminOrdersScreen()),
+                            );
+                          },
                         ),
-                      ),
+                      ],
 
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        child: Divider(height: 1, thickness: 0.8, color: Colors.grey.shade300),
+                      ),
                       _menuItem(
                         icon: Icons.credit_card_outlined,
                         text: "Payment Methods",
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => PaymentMethodsScreen(),
-                            ),
+                            MaterialPageRoute(builder: (context) => PaymentMethodsScreen()),
                           );
                         },
                       ),
-
-                      // Divider
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 8,
-                        ),
-                        child: Divider(
-                          height: 1,
-                          thickness: 0.8,
-                          color: Colors.grey.shade300,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+                        child: Divider(height: 1, thickness: 0.8, color: Colors.grey.shade300),
                       ),
-
-                      _menuItem(
-                        icon: Icons.help_outline,
-                        text: "Help Center",
-                        onTap: () {},
-                      ),
+                      _menuItem(icon: Icons.help_outline, text: "Help Center", onTap: () {}),
                       _menuItem(
                         icon: Icons.settings_outlined,
                         text: "Settings",
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                              builder: (context) => SettingsScreen(),
-                            ),
+                            MaterialPageRoute(builder: (context) => SettingsScreen()),
                           );
                         },
                       ),
-
                       const SizedBox(height: 20),
 
-                      // LOGOUT BUTTON - محسن
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.red.withOpacity(0.05),
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color: Colors.red.withOpacity(0.1),
-                              width: 1,
-                            ),
+                            border: Border.all(color: Colors.red.withOpacity(0.1), width: 1),
                           ),
                           child: ListTile(
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 8,
-                            ),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             leading: Container(
                               padding: const EdgeInsets.all(10),
                               decoration: BoxDecoration(
                                 color: Colors.red.withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(12),
                               ),
-                              child: const Icon(
-                                Icons.logout,
-                                color: Colors.red,
-                                size: 22,
-                              ),
+                              child: const Icon(Icons.logout, color: Colors.red, size: 22),
                             ),
                             title: const Text(
                               "Logout",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.red,
-                              ),
+                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.red),
                             ),
                             onTap: () {
                               showDialog(
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    title: const Text(
-                                      "Logout",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    content: const Text(
-                                      "Are you sure you want to log out?",
-                                    ),
-                                    actionsPadding: const EdgeInsets.symmetric(
-                                      horizontal: 16,
-                                      vertical: 8,
-                                    ),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                    title: const Text("Logout", style: TextStyle(fontWeight: FontWeight.bold)),
+                                    content: const Text("Are you sure you want to log out?"),
+                                    actionsPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                     actions: [
                                       TextButton(
-                                        onPressed: () => Navigator.pop(
-                                          context,
-                                        ), // لغلق الـ dialog
+                                        onPressed: () => Navigator.pop(context),
                                         style: TextButton.styleFrom(
                                           backgroundColor: Colors.grey.shade200,
                                           foregroundColor: Colors.black87,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 12,
-                                          ),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                                         ),
                                         child: const Text("Cancel"),
                                       ),
                                       TextButton(
                                         onPressed: () {
-                                          Navigator.pop(
-                                            context,
-                                          ); // غلق الـ dialog
-                                          // هنا تضيف أي عملية تسجيل خروج
-                                          debugPrint("User Logged Out!");
+                                          Navigator.pop(context);
+                                          _logout();
                                         },
                                         style: TextButton.styleFrom(
                                           backgroundColor: Colors.grey.shade700,
                                           foregroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                              12,
-                                            ),
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 20,
-                                            vertical: 12,
-                                          ),
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                                         ),
                                         child: const Text("Yes, Logout"),
                                       ),
@@ -347,10 +320,7 @@ class AppDrawer extends StatelessWidget {
                                 },
                               );
                             },
-
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                           ),
                         ),
                       ),
@@ -406,10 +376,7 @@ class AppDrawer extends StatelessWidget {
                 ),
                 if (badgeCount != null && badgeCount > 0)
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.pink.shade100,
                       borderRadius: BorderRadius.circular(20),
@@ -424,11 +391,7 @@ class AppDrawer extends StatelessWidget {
                     ),
                   ),
                 const SizedBox(width: 8),
-                Icon(
-                  Icons.chevron_right_rounded,
-                  color: Colors.grey.shade400,
-                  size: 20,
-                ),
+                Icon(Icons.chevron_right_rounded, color: Colors.grey.shade400, size: 20),
               ],
             ),
           ),
